@@ -22,6 +22,7 @@ class RootRoutes[F[_]: Async: Logger](implicit authService: AuthService[F, User]
   implicit object dsl extends Http4sDsl[F]; import dsl._
 
   private[this] val publicRoutes: HttpRoutes[F] = HttpRoutes.of[F] {
+    case request @ GET -> Root => FileLoader[F].page("index.html", request)
     case request if supportedStaticExtensions.exists(request.pathInfo.toString.endsWith) =>
       FileLoader[F].assets(request.pathInfo.toString, request)
   }
