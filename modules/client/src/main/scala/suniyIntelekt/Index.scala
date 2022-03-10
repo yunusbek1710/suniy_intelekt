@@ -7,11 +7,12 @@ import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import japgolly.scalajs.react.{CtorType, _}
 import org.scalajs.dom.{HTMLSelectElement, document}
 import org.scalajs.dom.html.Div
+import suniyIntelekt.selectpicker.SelectPicker
 
 import scala.scalajs.js.annotation.JSExportTopLevel
 
 @JSExportTopLevel("index")
-class Index{
+class Index {
   val kasalliklar: List[String] = List("infarq", "insult", "arteniar gipertoniya", "yuqori arteniar qon bosomi")
   val simptomlar: List[String] = List("yurak og'rishi", "yurak ishlashi nosozligi", "miyada qon aylanishi buzilishi",
     "bosh og'rig'i", "xushdan ketish", "qonning buzilishi", "qonga infeksiya tushishi", "holsizlik",  "nafas qisishi", "ko'ngil aynishi")
@@ -42,24 +43,39 @@ class Index{
     def onChangeSimptomName4: SyntheticEvent[HTMLSelectElement] => Callback = e =>
       $.modState(s => s.copy(simptom4 = e.target.value))
 
-    def click(implicit state: IndexState): Callback =
+    def click(implicit state: IndexState): Callback = {
+      val simptoms = List(state.simptom1, state.simptom2, state.simptom3, state.simptom4)
       if (state.simptom1.trim.isEmpty)
         Callback.alert("Iltimos birinchi simptomini tanlang!")
       else if (state.simptom2.trim.isEmpty)
         Callback.alert("Iltimos ikkinchi simptomini tanlang!!")
       else if (state.simptom3.trim.isEmpty)
-        Callback.alert("Iltimos uchinchi simptomini tanlang!!")
+        Callback.alert("Iltimos uchinchi simptomini tanlang!")
       else if (state.simptom4.trim.isEmpty)
         Callback.alert("Iltimos to'rtinchi simptomini tanlang!!")
+      else if(simptoms.contains("yurak og'rishi") && simptoms.contains("yurak ishlashi nosozligi"))
+        Callback.alert("Sizda Infarq kasalligi aniqlandi!")
+      else if(simptoms.contains("miyada qon aylanishi buzilishi") && simptoms.contains("bosh og'rig'i") && simptoms.contains("xushdan ketish"))
+        Callback.alert("Sizda Insult kasalligi aniqlandi!")
+      else if(simptoms.contains("qonning buzilishi") && simptoms.contains("qonga infeksiya tushishi"))
+        Callback.alert("Sizda Arteniar Gipertoniya kasalligi aniqlandi!")
+      else if(simptoms.contains("holsizlik") && simptoms.contains("nafas qisishi") && simptoms.contains("ko'ngil aynishi"))
+        Callback.alert("Sizda yuqori arteniar qon bosomi kasalligi aniqlandi!")
       else {
-        $.modState(s => s.copy(simptom1 = "", simptom2 = "", simptom3 = "", simptom4 = ""))
+        Callback.alert("Sizda hech qaysi yurak kasalligiga moyillik aniqlanmadi!")
       }
+    }
 
 
+    //    SelectPicker(
+//      className = "form-select",
+//      onChange = onChangeSimptomName1,
+//      isMulti = true,
+//      value = state.simptom1)
     def modal(implicit state: IndexState): TagMod = {
       <.div(
         <.div(^.className := "row")(
-          <.div(^.className := "col-md-12")(
+          <.div(^.className := "offset-3 col-md-6")(
             <.div(^.className := "add-contact px-3 py-3",
               <.h3(^.className := "my-3")("Kasallikni aniqlash!"),
               <.div(^.className := "my-3")(
@@ -83,7 +99,7 @@ class Index{
                     <.option(^.value := simptom)(simptom)
                   }: _*)),
               <.div(^.className := "my-3")(
-                <.label(^.className := "form-label", "Simptomlarini tanlang!"),
+                <.label(^.className := "form-label")("Simptomlarini tanlang!"),
                 <.select(
                   ^.cls := "form-select",
                   ^.onChange ==> onChangeSimptomName3,
@@ -93,7 +109,7 @@ class Index{
                     <.option(^.value := simptom)(simptom)
                   }: _*)),
               <.div(^.className := "my-3")(
-                <.label(^.className := "form-label", "Simptomlarini tanlang!"),
+                <.label(^.className := "form-label")("Simptomlarini tanlang!"),
                 <.select(
                   ^.cls := "form-select",
                   ^.onChange ==> onChangeSimptomName4,
@@ -102,11 +118,12 @@ class Index{
                     +: simptomlar.map { simptom =>
                     <.option(^.value := simptom)(simptom)
                   }: _*)),
-              <.div(^.className := "my-3")(
-                <.input(^.className := "btn add-contact-btn form-control")(
+              <.div(^.className := "my-3 row justify-content-center")(
+                <.div(^.cls := "col-md-3")(
+                <.input(^.className := "btn btn-primary add-contact-btn form-control")(
                   ^.`type` := "button",
-                  ^.value := "Qo'shish",
-                  ^.onClick --> click)))))
+                  ^.value := "Yuborish",
+                  ^.onClick --> click))))))
       )
     }
 
