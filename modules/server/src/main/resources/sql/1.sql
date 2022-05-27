@@ -22,4 +22,21 @@ CREATE TABLE "personal_data" (
     "women_note"        VARCHAR NOT NULL
 );
 
+CREATE TABLE "applications" (
+    "id"                UUID PRIMARY KEY,
+    "first_name"        VARCHAR NOT NULL,
+    "last_name"         VARCHAR NOT NULL,
+    "phone_number"      VARCHAR NOT NULL,
+    "description"       VARCHAR NOT NULL
+);
+
+CREATE TABLE "news_events" (
+    "id"                UUID PRIMARY KEY,
+    "title"             VARCHAR NOT NULL,
+    "text"              TEXT NOT NULL,
+    "image_url"         VARCHAR NOT NULL
+);
+
+DROP TABLE "news_events";
 DROP TABLE "personal_data";
+DROP TABLE "applications";
