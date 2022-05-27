@@ -1,12 +1,12 @@
 import Dependencies._
 
-ThisBuild / organization := "suniy_intelekt"
+ThisBuild / organization := "district"
 ThisBuild / scalaVersion := "2.13.8"
 ThisBuild / version      := "1.0"
 
 lazy val server = (project in file("modules/server"))
   .settings(
-    name := "Suniy_Intelekt",
+    name := "Mahalla",
     libraryDependencies ++= coreLibraries
   )
   .settings(
@@ -20,7 +20,7 @@ lazy val tests = project
   .in(file("modules/tests"))
   .configs(IntegrationTest)
   .settings(
-    name := "Suniy_Intelekt-test-suite",
+    name := "Mahalla-test-suite",
     Defaults.itSettings,
     libraryDependencies ++= testLibraries ++ testLibraries.map(_ % Test)
   )
