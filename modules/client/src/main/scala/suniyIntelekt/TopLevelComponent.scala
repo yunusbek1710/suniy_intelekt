@@ -10,6 +10,7 @@ import japgolly.scalajs.react.extra.router.{RouterCtl, _}
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom.document
 import suniyIntelekt.components.{AboutUs, News, Services}
+import suniyIntelekt.layout.Header
 import suniyIntelekt.notification.Notification
 
 import java.util.UUID
@@ -68,7 +69,7 @@ object TopLevelComponent extends AjaxImplicits {
         .renderWith((ctl, r) =>
           <.div(
             Notification.render(),
-//            Header.component(Header.Props(ctl, r.page)),
+            Header.component(Header.Props(ctl, r.page)),
             r.render(),
 //            Footer()
           )

@@ -1,8 +1,11 @@
 package suniyIntelekt
 
 import org.scalajs.dom.document
-
+import suniyIntelekt.notification.CssSettings._
+import suniyIntelekt.notification.NotificationStyle
+import scalacss.toStyleSheetInlineJsOps
 
 object Main extends App {
-  if (document.getElementById("index") != null) new Index()
+  NotificationStyle.addToDocument()
+  TopLevelComponent().renderIntoDOM(document.getElementById("index"))
 }
