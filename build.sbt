@@ -1,10 +1,17 @@
 import Dependencies._
 
-ThisBuild / organization := "district"
-ThisBuild / scalaVersion := "2.13.8"
-ThisBuild / version      := "1.0"
+lazy val projectSettings = Seq(version := "1.0", scalaVersion := "2.13.8")
+
+lazy val common = crossProject(JSPlatform, JVMPlatform)
+  .crossType(CrossType.Pure)
+  .in(file("modules/common"))
+  .settings(
+    libraryDependencies ++= circeLibs ++ catsLibs ++ cirisLibs
+  )
+  .settings(projectSettings: _*)
 
 lazy val server = (project in file("modules/server"))
+  .settings(projectSettings: _*)
   .settings(
     name := "Mahalla",
     libraryDependencies ++= coreLibraries
@@ -18,6 +25,7 @@ lazy val server = (project in file("modules/server"))
 
 lazy val tests = project
   .in(file("modules/tests"))
+  .settings(projectSettings: _*)
   .configs(IntegrationTest)
   .settings(
     name := "Mahalla-test-suite",
@@ -27,6 +35,7 @@ lazy val tests = project
   .dependsOn(server)
 
 lazy val client = (project in file("modules/client"))
+  .settings(projectSettings: _*)
   .settings(
     name := "client",
     scalaJSUseMainModuleInitializer := true,
@@ -40,7 +49,8 @@ lazy val client = (project in file("modules/client"))
       "io.circe"                          %%% "circe-parser"  % Versions.circe,
       "io.circe"                          %%% "circe-generic" % Versions.circe,
       "io.circe"                          %%% "circe-refined" % Versions.circe,
-      "eu.timepit"                        %%% "refined"       % Versions.refined
+      "eu.timepit"                        %%% "refined"       % Versions.refined,
+      "io.udash"                          %%% "udash-jquery"  % "3.2.0"
     ),
     webpackEmitSourceMaps := false,
     Compile / npmDependencies ++= Seq(
@@ -49,3 +59,10 @@ lazy val client = (project in file("modules/client"))
     )
   )
   .enablePlugins(ScalaJSBundlerPlugin)
+  .dependsOn(common.js)
+
+
+lazy val mahalla = (project in file("."))
+  .aggregate(server, client, tests)
+
+Global / onLoad := (Global / onLoad).value.andThen(state => "project server" :: state)
