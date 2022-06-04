@@ -1,6 +1,6 @@
 package mahalla
 
-import TopLevelComponent.AppPage.{AboutUsPage, IndexPage, NewsPage, ServicesPage}
+import TopLevelComponent.AppPage.{AboutUsPage, AddPersonPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
 import district.domain.UserInfo
 import japgolly.scalajs.react.React.Context
 import japgolly.scalajs.react._
@@ -8,14 +8,10 @@ import japgolly.scalajs.react.component.Scala.{BackendScope, Component, Unmounte
 import japgolly.scalajs.react.extra.router.SetRouteVia.HistoryReplace
 import japgolly.scalajs.react.extra.router.{RouterCtl, _}
 import japgolly.scalajs.react.vdom.html_<^._
-import mahalla.components.{AboutUs, News, Services, Index}
+import mahalla.components.{AboutUs, CreatePerson, Index, News, PersonInfo, Services}
 import mahalla.layout.{Footer, Header}
 import mahalla.notification.Notification
 import org.scalajs.dom.document
-import mahalla.components.AboutUs
-import mahalla.layout.Header
-
-import java.util.UUID
 
 object TopLevelComponent extends AjaxImplicits {
 
@@ -51,6 +47,10 @@ object TopLevelComponent extends AjaxImplicits {
     case object IndexPage  extends AppPage("Home")
 
     case object AboutUsPage extends AppPage("AboutUs")
+
+    case object AddPersonPage extends AppPage("AddPerson")
+
+    case object PersonInfoPage extends AppPage("PersonInfo")
   }
 
   val baseUrl: BaseUrl = BaseUrl.fromWindowOrigin_/
@@ -64,7 +64,9 @@ object TopLevelComponent extends AjaxImplicits {
           staticRoute(root, NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
           staticRoute("services", ServicesPage) ~> renderR(ctl => Services.component(Services.Props(ctl))),
           staticRoute("aboutUs", AboutUsPage) ~> renderR(ctl => AboutUs.component(AboutUs.Props(ctl))),
-          staticRoute("home", IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl)))
+          staticRoute("home", IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl))),
+          staticRoute("addPerson", AddPersonPage) ~> renderR(ctl => CreatePerson.component(CreatePerson.Props(ctl))),
+          staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl)))
         )
       rules
         .reduce(_ | _)

@@ -7,16 +7,17 @@ import japgolly.scalajs.react.vdom.html_<^._
 import japgolly.scalajs.react.vdom.svg_<^
 import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
+import mahalla.TopLevelComponent.AppPage.{AddPersonPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
 import mahalla.TopLevelComponent.{AppPage, GlobalState}
 
 object Header extends AjaxImplicits {
 
   case class State(
-                    cartCount: Long = 0L,
-                    searchText: String = "",
-                    busyLoader: Boolean = false,
-                    showModal: Boolean = true
-                  )
+    cartCount: Long = 0L,
+    searchText: String = "",
+    busyLoader: Boolean = false,
+    showModal: Boolean = true
+  )
 
   class Backend(props: Props, $ : Hooks.UseState[State], ctx: GlobalState) {
 //    def onChangeName(e: SyntheticEvent[HTMLInputElement]): Callback =
@@ -224,40 +225,30 @@ object Header extends AjaxImplicits {
 
     def header: VdomArray =
       VdomArray(
-        <.header(
-          ^.className := "header",
-          <.div(
-            ^.className := "topbar",
-            <.div(
-              ^.className := "container",
-              <.div(
-                ^.className := "row",
-                <.div(
-                  ^.className := "col-lg-8 col-12",
-                  <.div(
-                    ^.className := "top-contact",
+        <.header(^.className := "header")(
+          <.div(^.className := "topbar")(
+            <.div(^.className := "container")(
+              <.div(^.className := "row")(
+                <.div(^.className := "col-lg-8 col-12")(
+                  <.div(^.className := "top-contact")(
                     <.div(
                       ^.className := "single-contact",
-                      <.i(
-                        ^.className := "fa fa-phone"),
+                      <.i(^.className := "fa fa-phone"),
                       "Phone: +(998) 1234567"
                     ),
                     <.div(
                       ^.className := "single-contact",
-                      <.i(
-                        ^.className := "fa fa-envelope-open"),
+                      <.i(^.className := "fa fa-envelope-open"),
                       "Email: info@mahallam.uz"
                     ),
                     <.div(
                       ^.className := "single-contact",
-                      <.i(
-                        ^.className := "fa fa-clock-o"),
+                      <.i(^.className := "fa fa-clock-o"),
                       "Ish vaqti: 08:30 - 19:00"
                     )
                   )
                 ),
-                <.div(
-                  ^.className := "col-lg-4 col-12",
+                <.div(^.className := "col-lg-4 col-12")(
                   <.div(
                     ^.className := "topbar-right",
                     <.ul(
@@ -265,38 +256,31 @@ object Header extends AjaxImplicits {
                       <.li(
                         <.a(
                           ^.href := "#",
-                          <.i(
-                            ^.className := "fa fa-facebook")
+                          <.i(^.className := "fa fa-facebook")
                         )
                       ),
                       <.li(
                         <.a(
                           ^.href := "#",
-                          <.i(
-                            ^.className := "fa fa-instagram")
+                          <.i(^.className := "fa fa-instagram")
                         )
                       ),
                       <.li(
                         <.a(
                           ^.href := "#",
-                          <.i(
-                            ^.className := "fa fa-telegram")
+                          <.i(^.className := "fa fa-telegram")
                         )
                       ),
                       <.li(
                         <.a(
                           ^.href := "#",
-                          <.i(
-                            ^.className := "fa fa-user",
-                            "LogIn")
+                          <.i(^.className := "fa fa-user", "LogIn")
                         )
                       ),
                       <.li(
                         <.a(
                           ^.href := "#",
-                          <.i(
-                            ^.className := "fa fa-sign-out",
-                            "LogOut")
+                          <.i(^.className := "fa fa-sign-out", "LogOut")
                         )
                       )
                     )
@@ -329,8 +313,7 @@ object Header extends AjaxImplicits {
                             )
                           )
                         ),
-                        <.div(
-                          ^.className := "mobile-nav")
+                        <.div(^.className := "mobile-nav")
                       ),
                       <.div(
                         ^.className := "col-lg-10 col-md-9 col-12",
@@ -345,37 +328,31 @@ object Header extends AjaxImplicits {
                                 <.div(
                                   ^.className := "menu-home-menu-container",
                                   <.ul(
-                                    ^.id := "nav",
+                                    ^.id        := "nav",
                                     ^.className := "nav main-menu menu navbar-nav",
                                     <.li(
-                                      <.a(
-                                        ^.href := "index.html",
-                                        "Bosh sahifa")
+                                      <.a(props.ctl setOnClick IndexPage)("Bosh sahifa")
                                     ),
                                     <.li(
-                                      <.a(
-                                        ^.href := "news.html",
-                                        "Yangiliklar")
+                                      <.a(props.ctl setOnClick NewsPage)("Yangiliklar")
                                     ),
                                     <.li(
-                                      <.a(
-                                        ^.href := "structure.html",
-                                        "Tuzilma")
+                                      <.a(^.href := "structure.html")("Tuzilma")
                                     ),
                                     <.li(
-                                      <.a(
-                                        ^.href := "services.html",
-                                        "Xizmatlar")
+                                      <.a(props.ctl setOnClick ServicesPage)("Xizmatlar")
                                     ),
                                     <.li(
-                                      <.a(
-                                        ^.href := "about.html",
-                                        "Tizim haqida")
+                                      <.a(^.href := "about.html")("Tizim haqida")
                                     ),
                                     <.li(
-                                      <.a(
-                                        ^.href := "contact.html",
-                                        "Bog'lanish")
+                                      <.a(^.href := "contact.html")("Bog'lanish")
+                                    ),
+                                    <.li(
+                                      <.a(props.ctl setOnClick AddPersonPage)("Add person")
+                                    ),
+                                    <.li(
+                                      <.a(props.ctl setOnClick PersonInfoPage)("Person info")
                                     )
                                   )
                                 )
@@ -390,32 +367,30 @@ object Header extends AjaxImplicits {
                                 ^.className := "top-search",
                                 <.a(
                                   ^.href := "#0",
-                                  <.i(
-                                    ^.className := "fa fa-search")
+                                  <.i(^.className := "fa fa-search")
                                 )
                               ),
                               <.li(
                                 ^.className := "bar",
-                                <.a(
-                                  ^.className := "fa fa-bars")
+                                <.a(^.className := "fa fa-bars")
                               )
                             ),
                             <.div(
                               ^.className := "search-top",
                               <.form(
-                                ^.action := "#",
+                                ^.action    := "#",
                                 ^.className := "search-form",
-                                ^.method := "get",
+                                ^.method    := "get",
                                 <.input(
-                                  ^.`type` := "text",
-                                  ^.name := "s",
-                                  ^.value := "",
-                                  ^.placeholder := "Search here"),
+                                  ^.`type`      := "text",
+                                  ^.name        := "s",
+                                  ^.value       := "",
+                                  ^.placeholder := "Search here"
+                                ),
                                 <.button(
                                   ^.`type` := "submit",
-                                  ^.id := "searchsubmit",
-                                  <.i(
-                                    ^.className := "fa fa-search")
+                                  ^.id     := "searchsubmit",
+                                  <.i(^.className := "fa fa-search")
                                 )
                               )
                             )
@@ -434,8 +409,7 @@ object Header extends AjaxImplicits {
               ^.className := "cross",
               <.a(
                 ^.className := "btn",
-                <.i(
-                  ^.className := "fa fa-close")
+                <.i(^.className := "fa fa-close")
               )
             ),
             <.div(
@@ -444,34 +418,22 @@ object Header extends AjaxImplicits {
               <.ul(
                 ^.className := "links",
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Bosh sahifa")
+                  <.a(^.href := "#", "Bosh sahifa")
                 ),
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Yangiliklar")
+                  <.a(^.href := "#", "Yangiliklar")
                 ),
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Tuzilma")
+                  <.a(^.href := "#", "Tuzilma")
                 ),
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Xizmatlar")
+                  <.a(^.href := "#", "Xizmatlar")
                 ),
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Tizim haqida")
+                  <.a(^.href := "#", "Tizim haqida")
                 ),
                 <.li(
-                  <.a(
-                    ^.href := "#",
-                    "Bog'lanish")
+                  <.a(^.href := "#", "Bog'lanish")
                 )
               )
             ),
@@ -483,22 +445,19 @@ object Header extends AjaxImplicits {
                 <.li(
                   <.a(
                     ^.href := "#",
-                    <.i(
-                      ^.className := "fa fa-facebook")
+                    <.i(^.className := "fa fa-facebook")
                   )
                 ),
                 <.li(
                   <.a(
                     ^.href := "#",
-                    <.i(
-                      ^.className := "fa fa-instagram")
+                    <.i(^.className := "fa fa-instagram")
                   )
                 ),
                 <.li(
                   <.a(
                     ^.href := "#",
-                    <.i(
-                      ^.className := "fa fa-telegram")
+                    <.i(^.className := "fa fa-telegram")
                   )
                 )
               )

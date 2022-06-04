@@ -8,7 +8,7 @@ import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage
 
-object AboutUs extends AjaxImplicits {
+object CreatePerson extends AjaxImplicits {
 
   case class State(
                     busyLoader: Boolean = false
@@ -17,7 +17,7 @@ object AboutUs extends AjaxImplicits {
   class Backend($: Hooks.UseState[State]) {
 
     def account: VdomArray =
-      VdomArray(<.h1("about us page"))
+      VdomArray(<.h1("create person page"))
 
     def render: VdomArray =
       VdomArray(

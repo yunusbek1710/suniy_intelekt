@@ -17,7 +17,7 @@ object Services extends AjaxImplicits {
   class Backend($: Hooks.UseState[State]) {
 
     def account: VdomArray =
-      VdomArray()
+      VdomArray(<.h1("services page"))
 
     def render: VdomArray =
       VdomArray(

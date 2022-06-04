@@ -17,7 +17,7 @@ object News extends AjaxImplicits {
   class Backend($: Hooks.UseState[State]) {
 
     def account: VdomArray =
-      VdomArray()
+      VdomArray(<.h1("news page"))
 
     def render: VdomArray =
       VdomArray(

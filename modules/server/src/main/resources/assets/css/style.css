@@ -51,6 +51,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*======================================
 	Header CSS
 ========================================*/
+
+.slider-image {
+    background-image: url("../img/banner-1.jpg");
+}
 .header{
 	position:relative;
 }
