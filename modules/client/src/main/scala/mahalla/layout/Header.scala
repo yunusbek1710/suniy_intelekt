@@ -1,4 +1,4 @@
-package suniyIntelekt.layout
+package mahalla.layout
 
 import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtlF
@@ -6,8 +6,8 @@ import japgolly.scalajs.react.hooks.Hooks
 import japgolly.scalajs.react.vdom.html_<^._
 import japgolly.scalajs.react.vdom.svg_<^
 import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
-import suniyIntelekt.AjaxImplicits
-import suniyIntelekt.TopLevelComponent.{AppPage, GlobalState}
+import mahalla.AjaxImplicits
+import mahalla.TopLevelComponent.{AppPage, GlobalState}
 
 object Header extends AjaxImplicits {
 
@@ -376,8 +376,7 @@ object Header extends AjaxImplicits {
                                       <.a(
                                         ^.href := "contact.html",
                                         "Bog'lanish")
-                                    ),
-                                    "Matkarim 911 Beline, [02/06/2022 15:36]"
+                                    )
                                   )
                                 )
                               )

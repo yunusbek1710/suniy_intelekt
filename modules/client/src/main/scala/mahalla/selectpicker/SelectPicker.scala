@@ -1,4 +1,4 @@
-package suniyIntelekt.selectpicker
+package mahalla.selectpicker
 
 import japgolly.scalajs.react.component.Js.{Component, RawMounted, UnmountedWithRawType}
 import japgolly.scalajs.react.{CtorType, _}

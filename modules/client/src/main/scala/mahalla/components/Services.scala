@@ -1,14 +1,14 @@
-package suniyIntelekt.components
+package mahalla.components
 
 import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.hooks.Hooks
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
-import suniyIntelekt.AjaxImplicits
-import suniyIntelekt.TopLevelComponent.AppPage
+import mahalla.AjaxImplicits
+import mahalla.TopLevelComponent.AppPage
 
-object News extends AjaxImplicits {
+object Services extends AjaxImplicits {
 
   case class State(
                     busyLoader: Boolean = false

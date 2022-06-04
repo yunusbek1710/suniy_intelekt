@@ -1,4 +1,4 @@
-package suniyIntelekt
+package mahalla
 
 import scalacss.defaults.Exports
 import scalacss.internal.mutable.Settings

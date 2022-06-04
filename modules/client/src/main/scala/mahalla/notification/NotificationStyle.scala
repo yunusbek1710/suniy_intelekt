@@ -1,8 +1,9 @@
-package suniyIntelekt.notification
+package mahalla.notification
 
+import mahalla.notification.Notification.{Fail, Info, NotificationType, Success, Warn}
 import scalacss.internal.Keyframes
-import suniyIntelekt.notification.CssSettings._
-import suniyIntelekt.notification.Notification._
+import mahalla.notification.CssSettings._
+import Notification._
 import scalacss.defaults.Exports.StyleSheet
 
 import scala.concurrent.duration.DurationInt

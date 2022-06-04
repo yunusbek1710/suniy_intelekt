@@ -1,4 +1,4 @@
-package suniyIntelekt
+package mahalla
 
 import district.api.Urls
 import io.circe.{Decoder, Encoder}
@@ -8,7 +8,7 @@ import district.scalajs.JsonUtils._
 import japgolly.scalajs.react.extra.internal.AjaxException
 import org.scalajs.dom.{FormData, XMLHttpRequest, document, window}
 import japgolly.scalajs.react.extra.Ajax.Step2
-import suniyIntelekt.notification.Notification
+import mahalla.notification.Notification
 
 trait AjaxImplicits {
   val TokenName = "Authorization"

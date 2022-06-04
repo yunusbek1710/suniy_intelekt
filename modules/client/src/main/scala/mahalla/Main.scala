@@ -1,8 +1,8 @@
-package suniyIntelekt
+package mahalla
 
+import mahalla.notification.NotificationStyle
 import org.scalajs.dom.document
-import suniyIntelekt.notification.CssSettings._
-import suniyIntelekt.notification.NotificationStyle
+import mahalla.notification.CssSettings._
 import scalacss.toStyleSheetInlineJsOps
 
 object Main extends App {

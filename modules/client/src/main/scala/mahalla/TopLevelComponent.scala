@@ -1,6 +1,6 @@
-package suniyIntelekt
+package mahalla
 
-import suniyIntelekt.TopLevelComponent.AppPage.{AboutUsPage, IndexPage, NewsPage, ServicesPage}
+import TopLevelComponent.AppPage.{AboutUsPage, IndexPage, NewsPage, ServicesPage}
 import district.domain.UserInfo
 import japgolly.scalajs.react.React.Context
 import japgolly.scalajs.react._
@@ -8,10 +8,12 @@ import japgolly.scalajs.react.component.Scala.{BackendScope, Component, Unmounte
 import japgolly.scalajs.react.extra.router.SetRouteVia.HistoryReplace
 import japgolly.scalajs.react.extra.router.{RouterCtl, _}
 import japgolly.scalajs.react.vdom.html_<^._
+import mahalla.components.{AboutUs, News, Services, Index}
+import mahalla.layout.{Footer, Header}
+import mahalla.notification.Notification
 import org.scalajs.dom.document
-import suniyIntelekt.components.{AboutUs, News, Services}
-import suniyIntelekt.layout.Header
-import suniyIntelekt.notification.Notification
+import mahalla.components.AboutUs
+import mahalla.layout.Header
 
 import java.util.UUID
 
@@ -61,7 +63,8 @@ object TopLevelComponent extends AjaxImplicits {
           trimSlashes,
           staticRoute(root, NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
           staticRoute("services", ServicesPage) ~> renderR(ctl => Services.component(Services.Props(ctl))),
-          staticRoute("aboutUs", AboutUsPage) ~> renderR(ctl => AboutUs.component(AboutUs.Props(ctl)))
+          staticRoute("aboutUs", AboutUsPage) ~> renderR(ctl => AboutUs.component(AboutUs.Props(ctl))),
+          staticRoute("home", IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl)))
         )
       rules
         .reduce(_ | _)
@@ -71,7 +74,7 @@ object TopLevelComponent extends AjaxImplicits {
             Notification.render(),
             Header.component(Header.Props(ctl, r.page)),
             r.render(),
-//            Footer()
+            Footer()
           )
         )
     }

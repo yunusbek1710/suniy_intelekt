@@ -1,6 +1,6 @@
-package suniyIntelekt.notification
+package mahalla.notification
 
-import suniyIntelekt.notification.NotificationStyle._
+import NotificationStyle._
 import io.udash.wrappers.jquery.jQ
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.component.Scala.Unmounted
