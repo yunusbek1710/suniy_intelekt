@@ -337,9 +337,6 @@ object Header extends AjaxImplicits {
                                       <.a(props.ctl setOnClick NewsPage)("Yangiliklar")
                                     ),
                                     <.li(
-                                      <.a(^.href := "structure.html")("Tuzilma")
-                                    ),
-                                    <.li(
                                       <.a(props.ctl setOnClick ServicesPage)("Xizmatlar")
                                     ),
                                     <.li(
@@ -422,9 +419,6 @@ object Header extends AjaxImplicits {
                 ),
                 <.li(
                   <.a(^.href := "#", "Yangiliklar")
-                ),
-                <.li(
-                  <.a(^.href := "#", "Tuzilma")
                 ),
                 <.li(
                   <.a(^.href := "#", "Xizmatlar")
