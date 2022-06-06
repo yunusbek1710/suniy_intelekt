@@ -1,26 +1,30 @@
 package suniyIntelekt.db.sql
 
+
+import eu.timepit.refined.types.string.NonEmptyString
 import suniyIntelekt.implicits.PasswordOps
 import skunk._
 import skunk.codec.all._
+import skunk.data.Type
 import skunk.implicits._
+import district.domain.Role
 import suniyIntelekt.domain.{User, UserData}
-import suniyIntelekt.domain.custom.refinements.{EmailAddress, FullName}
+import suniyIntelekt.domain.custom.refinements.EmailAddress
 
-import java.time.LocalDateTime
 import java.util.UUID
 
 object UserSql {
-  val emailCodec: Codec[EmailAddress] = varchar.imap(email => EmailAddress.unsafeFrom(email))(email => email.value)
-  val fullnameCodec: Codec[FullName] = varchar.imap(fullname => FullName.unsafeFrom(fullname))(fullname => fullname.value)
 
-  val dec: Decoder[User] = (uuid ~ emailCodec ~ fullnameCodec ~ timestamp ~ varchar).map {
-    case id ~ email ~ fullName ~ createdAt ~ _ =>
-      User(id, fullName, email, createdAt)
+  val role: Codec[Role] = `enum`[Role](_.value, Role.find, Type("role"))
+  val emailCodec: Codec[EmailAddress] = varchar.imap(email => EmailAddress.unsafeFrom(email))(email => email.value)
+
+  val dec: Decoder[User] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).map {
+  case id ~ role ~ fullName ~ email ~ _ =>
+      User(id, role, NonEmptyString.unsafeFrom(fullName), email)
   }
 
-  val enc: Encoder[UUID ~ UserData] = (uuid ~ emailCodec ~ fullnameCodec ~ timestamp ~ varchar).contramap { case id ~ u =>
-    id ~ u.email ~ u.fullName ~ LocalDateTime.now() ~ u.password.toHashUnsafe
+  val enc: Encoder[UUID ~ UserData] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).contramap { case id ~ u =>
+    id ~ Role.USER ~ u.fullName.value ~ u.email ~ u.password.toHashUnsafe
   }
 
   val insert: Query[UUID ~ UserData, User] =

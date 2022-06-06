@@ -12,6 +12,7 @@ lazy val common = crossProject(JSPlatform, JVMPlatform)
 
 lazy val server = (project in file("modules/server"))
   .settings(projectSettings: _*)
+  .dependsOn(common.jvm)
   .settings(
     name := "Mahalla",
     libraryDependencies ++= coreLibraries
