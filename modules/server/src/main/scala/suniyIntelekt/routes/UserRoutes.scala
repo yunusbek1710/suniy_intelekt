@@ -3,6 +3,7 @@ package suniyIntelekt.routes
 
 import cats.effect.Async
 import cats.implicits._
+import district.domain.PersonForm
 import suniyIntelekt.domain._
 import suniyIntelekt.security.AuthService
 import suniyIntelekt.services.UserService
@@ -57,6 +58,17 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
   private[this] val privateRoutes: HttpRoutes[F] = authService.securedRoutes {
     case GET -> Root asAuthed user =>
       Ok(user)
+
+    case ar @ POST -> Root / "create-person" asAuthed _ =>
+      (for {
+        form     <- ar.request.as[PersonForm]
+        user     <- userService.createPerson(form)
+        response <- Created(user)
+      } yield response)
+        .handleErrorWith { err =>
+          logger.error(err)("Error occurred while add person. ") >>
+            BadRequest("Something went wrong. Please try again!")
+        }
 
     case secureReq @ GET -> Root / "logout" asAuthed _ =>
       authService.discard(secureReq.authenticator)

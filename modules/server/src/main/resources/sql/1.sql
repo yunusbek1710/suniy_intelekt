@@ -2,6 +2,8 @@ CREATE ROLE district WITH CREATEDB CREATEROLE LOGIN ENCRYPTED PASSWORD '123';
 CREATE DATABASE district WITH OWNER district;
 
 CREATE TYPE role AS ENUM ('admin', 'user');
+CREATE TYPE DOCUMENT_TYPE AS ENUM ('passport', 'birth_certificate', 'id_card');
+CREATE TYPE GENDER AS ENUM ('male', 'female');
 
 CREATE TABLE "users"
 (
@@ -27,7 +29,7 @@ CREATE TABLE "personal_data"
     "street"            VARCHAR       NOT NULL,
     "house_number"      INT           NOT NULL,
     "employment_status" VARCHAR       NOT NULL,
-    "edeucational_info" VARCHAR       NOT NULL,
+    "educational_info"  VARCHAR       NOT NULL,
     "family_status"     VARCHAR       NOT NULL,
     "health_status"     VARCHAR       NOT NULL,
     "youth_note"        VARCHAR       NOT NULL,

@@ -25,7 +25,7 @@ CREATE TABLE "personal_data"
     "street"            VARCHAR       NOT NULL,
     "house_number"      INT           NOT NULL,
     "employment_status" VARCHAR       NOT NULL,
-    "edeucational_info" VARCHAR       NOT NULL,
+    "educational_info"  VARCHAR       NOT NULL,
     "family_status"     VARCHAR       NOT NULL,
     "health_status"     VARCHAR       NOT NULL,
     "youth_note"        VARCHAR       NOT NULL,
