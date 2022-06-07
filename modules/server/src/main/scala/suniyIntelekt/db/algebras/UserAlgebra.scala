@@ -3,7 +3,7 @@ package suniyIntelekt.db.algebras
 import cats.effect.{Resource, Sync}
 import cats.implicits._
 import district.domain.{Person, PersonForm}
-import suniyIntelekt.db.sql.UserSql.{insert, selectByEmail, selectPass, insertPerson}
+import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, selectByEmail, selectPass, select}
 import suniyIntelekt.domain.custom.refinements.EmailAddress
 import suniyIntelekt.domain.{User, UserData}
 import suniyIntelekt.utils.GenUUID
@@ -13,10 +13,13 @@ import skunk.implicits.toIdOps
 import tsec.passwordhashers.PasswordHash
 import tsec.passwordhashers.jca.SCrypt
 
+import java.util.UUID
+
 trait UserAlgebra[F[_]] extends IdentityProvider[F, User] {
   def findByEmail(email: EmailAddress): F[Option[User]]
   def retrievePass(email: EmailAddress): F[Option[PasswordHash[SCrypt]]]
   def create(user: UserData): F[User]
+  def get(id: UUID): F[Option[User]]
   def createPerson(form: PersonForm): F[Unit]
 
 }
@@ -45,6 +48,9 @@ object UserAlgebra {
       GenUUID[F].make.flatMap { uuid =>
         prepCmd(insertPerson, uuid ~ form)
       }
+
+    override def get(id: UUID): F[Option[User]] =
+      prepOptQuery(select, id)
 
   }
 }

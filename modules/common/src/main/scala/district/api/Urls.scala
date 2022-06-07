@@ -9,7 +9,9 @@ object Urls {
   }
 
   object UserData {
-    val login: Url = "/login"
+    val login: Url = "/user/login"
+    val user: Url = "/user"
+    val register: Url = "/user/register"
   }
 
   object AdminData {

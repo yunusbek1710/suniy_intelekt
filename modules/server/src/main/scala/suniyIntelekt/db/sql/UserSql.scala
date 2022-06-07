@@ -1,7 +1,5 @@
 package suniyIntelekt.db.sql
 
-
-import cats.implicits.catsSyntaxOptionId
 import eu.timepit.refined.types.string.NonEmptyString
 import suniyIntelekt.implicits.PasswordOps
 import skunk._
@@ -43,7 +41,10 @@ object UserSql {
   val selectByEmail: Query[EmailAddress, User] =
     sql"""SELECT * FROM users WHERE email = $emailCodec """.query(dec)
 
+  val select: Query[UUID, User] =
+    sql"""SELECT * FROM users WHERE id = $uuid """.query(dec)
+
   val selectPass: Query[EmailAddress, String] =
-    sql"""SELECT password_hash FROM users WHERE email = $emailCodec """.query(varchar)
+    sql"""SELECT password FROM users WHERE email = $emailCodec """.query(varchar)
 
 }

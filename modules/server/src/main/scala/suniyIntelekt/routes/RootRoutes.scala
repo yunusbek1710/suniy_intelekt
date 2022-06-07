@@ -17,7 +17,7 @@ object RootRoutes {
 
 class RootRoutes[F[_]: Async: Logger](implicit authService: AuthService[F, User], F: Sync[F]) {
   private[this] val supportedStaticExtensions =
-    List(".css", ".png", ".ico", ".js", ".jpg", ".jpeg", ".otf", ".ttf", ".woff2", ".woff")
+    List(".css", ".png", ".ico", ".js", ".jpg", ".jpeg", ".otf", ".ttf", ".woff2", ".woff", ".svg")
 
   implicit object dsl extends Http4sDsl[F]; import dsl._
 

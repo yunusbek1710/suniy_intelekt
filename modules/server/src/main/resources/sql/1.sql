@@ -15,6 +15,10 @@ CREATE TABLE "users"
     UNIQUE (email)
 );
 
+INSERT INTO "users" ("id", "role", "name", "email", "password")
+VALUES ('c1039d34-425b-4f78-9a7f-893f5b4df478', 'admin', 'Admin', 'personInfo@gmail.com',
+        '$s0$e0801$5JK3Ogs35C2h5htbXQoeEQ==$N7HgNieSnOajn1FuEB7l4PhC6puBSq+e1E8WUaSJcGY=');
+
 CREATE TABLE "personal_data"
 (
     "id"                UUID PRIMARY KEY,

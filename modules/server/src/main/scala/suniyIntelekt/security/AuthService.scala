@@ -3,7 +3,6 @@ package suniyIntelekt.security
 import cats.effect._
 import cats.implicits._
 import suniyIntelekt.domain.Credentials
-import suniyIntelekt.domain.Credentials
 import suniyIntelekt.domain.custom.refinements.EmailAddress
 import suniyIntelekt.implicits.PartOps
 import suniyIntelekt.security.AuthHelper._
@@ -15,13 +14,15 @@ import org.http4s.circe.CirceEntityCodec.circeEntityDecoder
 import org.http4s.dsl.Http4sDsl
 import org.http4s.headers.Location
 import org.http4s.multipart.Multipart
-import org.http4s.{HttpRoutes, Request, Response, Status, Uri}
+import org.http4s.{HttpDate, HttpRoutes, Request, Response, ResponseCookie, Status, Uri}
 import tsec.authentication._
 import tsec.authentication.credentials.RawCredentials
 import tsec.cipher.symmetric.jca.{AES128GCM, SecretKey}
 import tsec.cipher.symmetric.{AADEncryptor, IvGen}
 import tsec.common.SecureRandomId
 
+import java.time.Instant
+import java.util.UUID
 import scala.concurrent.duration.DurationInt
 
 abstract class AuthService[F[_]: Sync, U] {
@@ -93,6 +94,16 @@ object AuthService {
         key
       )
 
+    private[this] def session(seconds: Long) =
+      ResponseCookie(
+        "ajs_anonymous_id",
+        UUID.randomUUID().toString,
+        Some(HttpDate.unsafeFromInstant(Instant.now().plusSeconds(seconds))),
+        path = "/".some,
+        secure = true,
+        httpOnly = false
+      )
+
     private[this] def authWithToken: TokenSecReqHandler[F, U] = SecuredRequestHandler(bearerTokenAuth)
 
     private[this] def auth: SecReqHandler[F, U] = SecuredRequestHandler(stateless)
@@ -103,7 +114,7 @@ object AuthService {
     private[this] def createSession(credentials: Credentials): F[Response[F]] = {
       auth.authenticator
         .create(credentials.email)
-        .map(auth.authenticator.embed(Response(Status.NoContent), _))
+        .map(auth.authenticator.embed(Response(Status.NoContent).addCookie(session(30 * 60)), _))
     }
 
     override def authorizer(request: Multipart[F])(implicit dsl: Http4sDsl[F]): F[Response[F]] = {
@@ -139,14 +150,16 @@ object AuthService {
       authWithToken.liftService(TSecAuthService(pf), onNotAuthenticated.orElse(defaultNotAuthenticated))
 
     override def securedRoutes(pf: SecHttpRoutes[F, U], onNotAuthenticated: OnNotAuthenticated[F]): HttpRoutes[F] =
-      auth.liftService(TSecAuthService(pf), onNotAuthenticated.orElse(defaultNotAuthenticated))
+      auth.liftService(TSecAuthService(pf).map(_.addCookie(session(30 * 60))),
+        onNotAuthenticated.orElse(defaultNotAuthenticated).map(_.map(_.addCookie(session(0))))
+      )
 
     override def discard(
                           authenticator: AuthEncryptedCookie[AES128GCM, EmailAddress]
                         )(implicit dsl: Http4sDsl[F]): F[Response[F]] = {
       import dsl._
-      auth.authenticator.discard(authenticator).flatMap { _ =>
-        SeeOther(Location(Uri.unsafeFromString("/login")))
+      auth.authenticator.discard(authenticator).flatMap { cookie =>
+        SeeOther(Location(Uri.unsafeFromString("/"))).map(_.addCookie(cookie.toCookie).addCookie(session(0)))
       }
     }
   }

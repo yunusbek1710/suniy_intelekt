@@ -9,7 +9,7 @@ object Footer {
   def apply(): VdomElement =
     <.footer(
       ^.className := "footer",
-      ^.style := js.Dictionary("background-image" -> "url('img/map.png')"),
+      ^.style := js.Dictionary("background-image" -> "url('assets/img/map.png')"),
       <.div(
         ^.className := "footer-top",
         <.div(

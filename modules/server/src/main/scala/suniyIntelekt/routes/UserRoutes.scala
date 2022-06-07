@@ -3,7 +3,7 @@ package suniyIntelekt.routes
 
 import cats.effect.Async
 import cats.implicits._
-import district.domain.PersonForm
+import district.domain.{PersonForm, UserForm}
 import suniyIntelekt.domain._
 import suniyIntelekt.security.AuthService
 import suniyIntelekt.services.UserService
@@ -13,6 +13,8 @@ import org.http4s.server.Router
 import org.typelevel.log4cats.Logger
 import tsec.authentication._
 import tsec.authentication.credentials.CredentialsError
+
+import java.util.UUID
 
 object UserRoutes {
   val prefixPath = "/user"
@@ -45,7 +47,6 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
     case req @ POST -> Root / "register" =>
       (for {
         userData <- req.as[UserData]
-        _        <- logger.debug(s"$userData")
         user     <- userService.create(userData)
         response <- Created(user)
       } yield response)
@@ -53,6 +54,10 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
           logger.error(err)("Error occurred while register User. ") >>
             BadRequest("Something went wrong. Please try again!")
         }
+
+    case req @ GET -> Root / "get" / UUIDVar(userId) =>
+      userService.get(userId).flatMap(count => Ok(count))
+
   }
 
   private[this] val privateRoutes: HttpRoutes[F] = authService.securedRoutes {
