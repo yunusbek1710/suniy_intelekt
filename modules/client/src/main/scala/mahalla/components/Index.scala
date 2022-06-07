@@ -20,19 +20,14 @@ object Index extends AjaxImplicits {
 
     def account: VdomArray =
       VdomArray(
-        <.section(^.cls := "hero-slider style1")(
-          <.div(^.className := "home-slider")(
-            <.div(^.className := "single-slider slider-image")(
-              <.div(
-                ^.className := "container",
-                <.div(
-                  ^.className := "row",
-                  <.div(
-                    ^.className := "col-lg-7 col-md-8 col-12",
-                    <.div(
-                      ^.className := "welcome-text",
-                      <.div(
-                        ^.className := "hero-text",
+        <.section(^.className := "hero-slider style1",
+          <.div(^.className := "home-slider",
+            <.div(^.className := "single-slider", ^.style := js.Dictionary("background-image" -> "url('/assets/img/banner-1.jpg')"),
+              <.div(^.className := "container",
+                <.div(^.className := "row",
+                  <.div(^.className := "col-lg-7 col-md-8 col-12",
+                    <.div(^.className := "welcome-text",
+                      <.div(^.className := "hero-text",
                         <.h4("18.04.2022"),
                         <.br,
                         <.h4("Mahallada yangi Guzar qurib bitkazildi va foydalanishga topshirildi")
@@ -41,21 +36,15 @@ object Index extends AjaxImplicits {
                   )
                 )
               )
-            )
+            ),
           )
         ),
-        <.section(
-          ^.className := "latest-blog section-bg section-space",
-          <.div(
-            ^.className := "container",
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12",
-                <.div(
-                  ^.className := "section-title default text-center",
-                  <.div(
-                    ^.className := "section-top",
+        <.section(^.className := "latest-blog section-bg section-space",
+          <.div(^.className := "container",
+            <.div(^.className := "row",
+              <.div(^.className := "col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12",
+                <.div(^.className := "section-title default text-center",
+                  <.div(^.className := "section-top",
                     <.h1(
                       <.span("So'nggi"),
                       <.b("Yangiliklar")
@@ -64,175 +53,220 @@ object Index extends AjaxImplicits {
                 )
               )
             ),
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-12",
-                <.div(
-                  ^.className := "blog-latest blog-latest-slider",
-                  <.div(
-                    ^.className := "single-slider",
-                    <.div(
-                      ^.className := "single-news",
-                      <.div(
-                        ^.className := "news-head overlay",
-                        <.span(
-                          ^.className := "news-img",
-                          ^.style     := js.Dictionary("background-image" -> "//via.placeholder.com/700x530')")
-                        ),
-                        <.a(^.href := "#", ^.className := "bizwheel-btn theme-2", "Read more")
+            <.section(^.className := "blog-layout news-default section-space",
+              <.div(^.className := "container",
+                <.div(^.className := "row",
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/news-1.jpg", ^.alt := "#"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
+                            )
+                          ),
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "May 29, 2022"
+                          ),
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "300"
+                          )
+                        )
                       ),
-                      <.div(
-                        ^.className := "news-body",
-                        <.div(
-                          ^.className := "news-content",
-                          <.h3(
-                            ^.className := "news-title",
-                            <.a(
-                              ^.href := "blog-single.html",
-                              """We Provide you Best &
-                                            Creative Consulting Service"""
-                            )
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "#","Mahalla fuqarolar yig‘inlarining yangi binolari foydalanishga topshirildi")
                           ),
-                          <.div(
-                            ^.className := "news-text",
-                            <.p("""Sed tempus pulvinar augue ut euismod. Donec a nisi
-                                            volutpat, dignissim mauris eget. Quisque vitae nunc sit amet eros
-                                            pellentesque tempus at sit amet sem. Maecenas feugiat mauris""")
+                          <.div(^.className := "news-text",
+                            <.p("""Andijon, Oltinko‘l tumanida "Keksalar haftaligi" doirasida "Andijon" hamda “Ayshaxonim” mahalla fuqarolar yig‘ini yangi binolarining ochilish marosimi bo‘lib o‘tdi.""")
                           ),
-                          <.ul(
-                            ^.className := "news-meta",
-                            <.li(
-                              ^.className := "date",
-                              <.i(^.className := "fa fa-calendar"),
-                              "April 2020"
-                            )
+                          <.a(^.href := "blog-single.html", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
                           )
                         )
                       )
                     )
                   ),
-                  <.div(
-                    ^.className := "single-slider",
-                    <.div(
-                      ^.className := "single-news",
-                      <.div(
-                        ^.className := "news-head overlay",
-                        <.span(
-                          ^.className := "news-img",
-                          ^.style     := js.Dictionary("background-image" -> "//via.placeholder.com/700x530')")
-                        ),
-                        <.a(^.href := "#", ^.className := "bizwheel-btn theme-2", "Read more")
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/ko'chat.jpg", ^.alt := "ko'chat ekish"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
+                            )
+                          ),
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "May 10, 2022"
+                          ),
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "199"
+                          )
+                        )
                       ),
-                      <.div(
-                        ^.className := "news-body",
-                        <.div(
-                          ^.className := "news-content",
-                          <.h3(
-                            ^.className := "news-title",
-                            <.a(
-                              ^.href := "blog-single.html",
-                              """We Provide you Best &
-                                            Creative Consulting Service"""
-                            )
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "#","Parkent tumanida erta tongdan ko‘chat ekish tadbirlari")
                           ),
-                          <.div(
-                            ^.className := "news-text",
-                            <.p("""Sed tempus pulvinar augue ut euismod. Donec a nisi
-                                            volutpat, dignissim mauris eget. Quisque vitae nunc sit amet eros
-                                            pellentesque tempus at sit amet sem. Maecenas feugiat mauris""")
+                          <.div(^.className := "news-text",
+                            <.p("Daraxt ekib, bog‘ yaratish xalqimiz turmush tarziga xos bo‘lgan milliy qadriyatlarimizdan biri.")
                           ),
-                          <.ul(
-                            ^.className := "news-meta",
-                            <.li(
-                              ^.className := "date",
-                              <.i(^.className := "fa fa-calendar"),
-                              "April 2020"
-                            )
+                          <.a(^.href := "#", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
                           )
                         )
                       )
                     )
                   ),
-                  <.div(
-                    ^.className := "single-slider",
-                    <.div(
-                      ^.className := "single-news",
-                      <.div(
-                        ^.className := "news-head overlay",
-                        <.span(
-                          ^.className := "news-img",
-                          ^.style     := js.Dictionary("background-image" -> "//via.placeholder.com/700x530')")
-                        ),
-                        <.a(^.href := "#", ^.className := "bizwheel-btn theme-2", "Read more")
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/raisvakolat.jpg", ^.alt := "rais vakolatlari"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
+                            )
+                          ),
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "Aprel 30, 2022"
+                          ),
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "280"
+                          )
+                        )
                       ),
-                      <.div(
-                        ^.className := "news-body",
-                        <.div(
-                          ^.className := "news-content",
-                          <.h3(
-                            ^.className := "news-title",
-                            <.a(
-                              ^.href := "blog-single.html",
-                              """We Provide you Best &
-                                            Creative Consulting Service"""
-                            )
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "","Mahalla raislarining vakolatlari kengaytiriladi")
                           ),
-                          <.div(
-                            ^.className := "news-text",
-                            <.p("""Sed tempus pulvinar augue ut euismod. Donec a nisi
-                                            volutpat, dignissim mauris eget. Quisque vitae nunc sit amet eros
-                                            pellentesque tempus at sit amet sem. Maecenas feugiat mauris""")
+                          <.div(^.className := "news-text",
+                            <.p("Prezident mahalliy ijro organlari, vakillik idoralari hamda mahallaning institutsional asoslarini yanada takomillashtirish lozimligini ta’kidladi.")
                           ),
-                          <.ul(
-                            ^.className := "news-meta",
-                            <.li(
-                              ^.className := "date",
-                              <.i(^.className := "fa fa-calendar"),
-                              "April 2020"
-                            )
+                          <.a(^.href := "", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
                           )
                         )
                       )
                     )
                   ),
-                  <.div(
-                    ^.className := "single-slider",
-                    <.div(
-                      ^.className := "single-news",
-                      <.div(
-                        ^.className := "news-head overlay",
-                        <.span(
-                          ^.className := "news-img",
-                          ^.style     := js.Dictionary("background-image" -> "//via.placeholder.com/700x530')")
-                        ),
-                        <.a(^.href := "#", ^.className := "bizwheel-btn theme-2", "Read more")
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/saylov.jpg", ^.alt := "rais saylovi"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
+                            )
+                          ),
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "Aprel 19, 2022"
+                          ),
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "410"
+                          )
+                        )
                       ),
-                      <.div(
-                        ^.className := "news-body",
-                        <.div(
-                          ^.className := "news-content",
-                          <.h3(
-                            ^.className := "news-title",
-                            <.a(
-                              ^.href := "blog-single.html",
-                              """We Provide you Best &
-                                            Creative Consulting Service"""
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "","O'zbekistonda mahalla raislari saylovi boshlandi")
+                          ),
+                          <.div(^.className := "news-text",
+                            <.p("O‘zbekistonda fuqarolar yig‘inlari raislari (oqsoqollari) saylovi boshlandi. Mamlakatda 9349 ta fuqarolar yig‘inlari mavjud.")
+                          ),
+                          <.a(^.href := "", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/majlis.jpg", ^.alt := "tanqid"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
                             )
                           ),
-                          <.div(
-                            ^.className := "news-text",
-                            <.p("""Sed tempus pulvinar augue ut euismod. Donec a nisi
-                                            volutpat, dignissim mauris eget. Quisque vitae nunc sit amet eros
-                                            pellentesque tempus at sit amet sem. Maecenas feugiat mauris""")
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "Aprel 15, 2022"
                           ),
-                          <.ul(
-                            ^.className := "news-meta",
-                            <.li(
-                              ^.className := "date",
-                              <.i(^.className := "fa fa-calendar"),
-                              "April 2020"
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "190"
+                          )
+                        )
+                      ),
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "#","Mahalla tizimidagi kamchiliklar tanqid qilindi")
+                          ),
+                          <.div(^.className := "news-text",
+                            <.p("Prezidentimiz mahalla tizimidan xalq ham, davlat ham to‘la rozi emasligini, bu sohada kamchilik va dolzarb masalalar ko‘pligini ta’kidladi.")
+                          ),
+                          <.a(^.href := "blog-single.html", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  <.div(^.className := "col-lg-4 col-md-6 col-12",
+                    <.div(^.className := "single-news",
+                      <.div(^.className := "news-head overlay",
+                        <.img(^.src := "/assets/img/obod.jpg", ^.alt := "#"),
+                        <.ul(^.className := "news-meta",
+                          <.li(^.className := "author",
+                            <.a(^.href := "#",
+                              <.i(^.className := "fa fa-user"),
+                              "admin"
                             )
+                          ),
+                          <.li(^.className := "date",
+                            <.i(^.className := "fa fa-calendar"),
+                            "Aprel 1, 2022"
+                          ),
+                          <.li(^.className := "view",
+                            <.i(^.className := "fa fa-comments"),
+                            "290"
+                          )
+                        )
+                      ),
+                      <.div(^.className := "news-body",
+                        <.div(^.className := "news-content",
+                          <.h3(^.className := "news-title",
+                            <.a(^.href := "#","“Obod va xavfsiz mahalla” tamoyili amalga oshiriladi")
+                          ),
+                          <.div(^.className := "news-text",
+                            <.p("Prezident Shavkat Mirziyoyev Oliy Majlisga yaqinda yo‘llagan Murojaatnomasida mahalla tizimini o‘zgartirish, “Obod va xavfsiz mahalla” tamoyilini joriy etish zarurligi to‘g‘risida fikr bildirgan edi.")
+                          ),
+                          <.a(^.href := "blog-single.html", ^.className := "more","Batafsil o'qish",
+                            <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")
                           )
                         )
                       )
@@ -243,104 +277,67 @@ object Index extends AjaxImplicits {
             )
           )
         ),
-        <.section(
-          ^.className := "features-area section-bg",
-          <.div(
-            ^.className := "container",
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-lg-3 col-md-6 col-12",
-                <.div(
-                  ^.className := "single-feature",
+        <.section(^.className := "features-area section-bg",
+          <.div(^.className := "container",
+            <.h3("Foydali havolalar"),
+            <.div(^.className := "row",
+              <.div(^.className := "col-lg-3 col-md-6 col-12",
+                <.div(^.className := "single-feature",
                   <.div(
-                    ^.className := "icon-head",
-                    <.i(^.className := "fa fa-podcast")
+                    <.img(^.style := js.Dictionary("height" -> "160px"), ^.src := "/assets/img/oliymajlis.png", ^.alt := "oliy majlis")
                   ),
                   <.h4(
-                    <.a(^.href := "service-single.html", "Creative Design")
+                    <.a(^.href := "https://parliament.gov.uz/uz/","O'zbekiston Respublikasi Oliy Majlis qonunchilik palatasi rasmiy veb-sayti")
                   ),
-                  <.p("""Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper,
-                            velitsd odio scelerisque tod"""),
-                  <.div(
-                    ^.className := "button",
-                    <.a(
-                      ^.href      := "service-single.html",
-                      ^.className := "bizwheel-btn",
-                      <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      "Learn More"
+                  <.div(^.className := "button",
+                    <.a(^.href := "https://parliament.gov.uz/uz/", ^.className := "bizwheel-btn",
+                      <.i(^.className := "fa fa-arrow-circle-o-right")
                     )
                   )
                 )
               ),
-              <.div(
-                ^.className := "col-lg-3 col-md-6 col-12",
-                <.div(
-                  ^.className := "single-feature",
+              <.div(^.className := "col-lg-3 col-md-6 col-12",
+                <.div(^.className := "single-feature",
                   <.div(
-                    ^.className := "icon-head",
-                    <.i(^.className := "fa fa-podcast")
+                    <.img(^.src := "/assets/img/gerb.png", ^.alt := "prezident uz")
                   ),
-                  <.h4(
-                    <.a(^.href := "service-single.html", "Quality Service")
+                  <.h5(
+                    <.a(^.href := "https://president.uz/uz"),
+                    "O'zbekiston Respublikasi Prezidentining rasmiy veb-sayti"
                   ),
-                  <.p("""Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper,
-                            velitsd odio scelerisque tod"""),
-                  <.div(
-                    ^.className := "button",
-                    <.a(
-                      ^.href      := "service-single.html",
-                      ^.className := "bizwheel-btn",
-                      <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      "Learn More"
+                  <.div(^.className := "button",
+                    <.a(^.href := "https://president.uz/uz", ^.className := "bizwheel-btn",
+                      <.i(^.className := "fa fa-arrow-circle-o-right")
                     )
                   )
                 )
               ),
-              <.div(
-                ^.className := "col-lg-3 col-md-6 col-12",
-                <.div(
-                  ^.className := "single-feature active",
+              <.div(^.className := "col-lg-3 col-md-6 col-12",
+                <.div(^.className := "single-feature active",
                   <.div(
-                    ^.className := "icon-head",
-                    <.i(^.className := "fa fa-podcast")
+                    <.img(^.style := js.Dictionary("height" -> "182px"), ^.src := "/assets/img/lexuz.png", ^.alt := "lex uz")
                   ),
                   <.h4(
-                    <.a(^.href := "service-single.html", "On-time Delivery")
+                    <.a(^.href := "https://www.lex.uz/","LEX.UZ O'zbekiston Respublikasi Qonun hujjatlari ma'lumotlari")
                   ),
-                  <.p("""Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper,
-                            velitsd odio scelerisque tod"""),
-                  <.div(
-                    ^.className := "button",
-                    <.a(
-                      ^.href      := "service-single.html",
-                      ^.className := "bizwheel-btn",
-                      <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      "Learn More"
+                  <.div(^.className := "button",
+                    <.a(^.href := "https://www.lex.uz/", ^.className := "bizwheel-btn",
+                      <.i(^.className := "fa fa-arrow-circle-o-right")
                     )
                   )
                 )
               ),
-              <.div(
-                ^.className := "col-lg-3 col-md-6 col-12",
-                <.div(
-                  ^.className := "single-feature",
+              <.div(^.className := "col-lg-3 col-md-6 col-12",
+                <.div(^.className := "single-feature",
                   <.div(
-                    ^.className := "icon-head",
-                    <.i(^.className := "fa fa-podcast")
+                    <.img(^.style := js.Dictionary("height" -> "205px"), ^.src := "/assets/img/gerb.png", ^.alt := "gov uz Hukumat")
                   ),
                   <.h4(
-                    <.a(^.href := "service-single.html", "24/7 Live support")
+                    <.a(^.href := "https://www.gov.uz/uz","O'zbekiston Respublikasi Hukumat portali")
                   ),
-                  <.p("""Aenean aliquet rutrum enimn scelerisque. Nam dictumanpo, antequis laoreet ullamcorper,
-                            velitsd odio scelerisque tod"""),
-                  <.div(
-                    ^.className := "button",
-                    <.a(
-                      ^.href      := "service-single.html",
-                      ^.className := "bizwheel-btn",
-                      <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      "Learn More"
+                  <.div(^.className := "button",
+                    <.a(^.href := "https://www.gov.uz/uz", ^.className := "bizwheel-btn",
+                      <.i(^.className := "fa fa-arrow-circle-o-right")
                     )
                   )
                 )
@@ -348,146 +345,94 @@ object Index extends AjaxImplicits {
             )
           )
         ),
-        <.section(
-          ^.className := "call-action overlay",
-          ^.style     := js.Dictionary("background-image" -> "//via.placeholder.com/1500x300')"),
-          <.div(
-            ^.className := "container",
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-lg-9 col-12",
-                <.div(
-                  ^.className := "call-inner",
-                  <.h2("Brand Products & Creativity is our Fashion"),
-                  <.p("ehicula maximus velit. Morbi non tincidunt purus, a hendrerit nisi. Vivamus elementum")
-                )
-              ),
-              <.div(
-                ^.className := "col-lg-3 col-12",
-                <.div(
-                  ^.className := "button",
-                  <.a(^.href := "structure.html", ^.className := "bizwheel-btn", "Our Portfolio")
+        <.section(^.className := "call-action overlay",
+          <.div(^.className := "container",
+            <.div(^.className := "row",
+              <.div(^.className := "col-12",
+                <.div(^.className := "call-inner",
+                  <.h4(^.className := "text-white","Islohotlarimiz natijalari, boʼlayotgan oʼzgarishlar va aholining kayfiyati avvalo mahallada seziladi. Shu maʼnoda, “mahalla – yorugʼ yuzimiz va vijdonimiz koʼzgusi”, desak, toʼgʼri boʼladi."),
+                  <.p(^.className := "text-right","Shavkat Mirziyoyev")
                 )
               )
             )
           )
         ),
-        <.section(
-          ^.className := "services section-bg section-space",
-          <.div(
-            ^.className := "container",
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-12",
-                <.div(
-                  ^.className := "section-title style2 text-center",
-                  <.div(
-                    ^.className := "section-top",
+        <.section(^.className := "services section-bg section-space",
+          <.div(^.className := "container",
+            <.div(^.className := "row",
+              <.div(^.className := "col-12",
+                <.div(^.className := "section-title  style2",
+                  <.div(^.className := "section-top",
                     <.h1(
                       <.span("Bizning"),
                       <.b("Xizmatlar")
-                    ),
-                    <.h4("""We provide quality service &
-                            support..""")
-                  ),
-                  <.div(
-                    ^.className := "section-bottom",
-                    <.div(
-                      ^.className := "text-style-two",
-                      <.p("""Aliquam Sodales Justo Sit Amet Urna Auctor Scelerisquinterdum Leo Anet Tempus Enim
-                                    Esent Egetis Hendrerit Vel Nibh Vitae Ornar Sem Velit Aliquam""")
                     )
                   )
                 )
               )
             ),
-            <.div(
-              ^.className := "row",
-              <.div(
-                ^.className := "col-lg-4 col-md-4 col-12",
-                <.div(
-                  ^.className := "single-service",
-                  <.div(
-                    ^.className := "service-head",
-                    <.img(^.src := "https://via.placeholder.com/555x410", ^.alt := "#"),
-                    <.div(
-                      ^.className := "icon-bg",
-                      <.i(^.className := "fa fa-handshake-o")
-                    )
-                  ),
-                  <.div(
-                    ^.className := "service-content",
+            <.div(^.className := "row",
+              <.div(^.className := "col-lg-4 col-md-6 col-12",
+                <.div(^.className := "single-service",
+                  <.div(^.className := "service-content",
                     <.h4(
-                      <.a(^.href := "service-business.html", "Business Strategy")
+                      <.a(^.href := "https://my.gov.uz/oz/pension","Pensiya (nafaqa) haqida ma’lumot")
                     ),
-                    <.p("""Cras venenatis, purus sit amet tempus mattis, justo nisi facilisis metus, in tempus ipsum
-                                ipsum eu ipsum. Class aptent taciti"""),
-                    <.a(
-                      ^.className := "btn",
-                      ^.href      := "service-business.html",
+                    <.a(^.className := "btn", ^.href := "https://my.gov.uz/oz/pension",
                       <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      """View
-                                Service"""
+                      "View Service"
                     )
                   )
                 )
               ),
-              <.div(
-                ^.className := "col-lg-4 col-md-4 col-12",
-                <.div(
-                  ^.className := "single-service",
-                  <.div(
-                    ^.className := "service-head",
-                    <.img(^.src := "https://via.placeholder.com/555x410", ^.alt := "#"),
-                    <.div(
-                      ^.className := "icon-bg",
-                      <.i(^.className := "fa fa-html5")
-                    )
-                  ),
-                  <.div(
-                    ^.className := "service-content",
+              <.div(^.className := "col-lg-4 col-md-6 col-12",
+                <.div(^.className := "single-service",
+                  <.div(^.className := "service-content",
                     <.h4(
-                      <.a(^.href := "service-develop.html", "Web Development")
+                      <.a(^.href := "https://my.gov.uz/oz/pinfl-info","Doimiy (vaqtinchalik) yashash joyi bo'yicha ma'lumot")
                     ),
-                    <.p("""Cras venenatis, purus sit amet tempus mattis, justo nisi facilisis metus, in tempus ipsum
-                                ipsum eu ipsum. Class aptent taciti"""),
-                    <.a(
-                      ^.className := "btn",
-                      ^.href      := "service-develop.html",
+                    <.a(^.className := "btn", ^.href := "https://my.gov.uz/oz/pinfl-info",
                       <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      """View
-                                Service"""
+                      "View Service"
                     )
                   )
                 )
               ),
-              <.div(
-                ^.className := "col-lg-4 col-md-4 col-12",
-                <.div(
-                  ^.className := "single-service",
-                  <.div(
-                    ^.className := "service-head",
-                    <.img(^.src := "https://via.placeholder.com/555x410", ^.alt := "#"),
-                    <.div(
-                      ^.className := "icon-bg",
-                      <.i(^.className := "fa fa-cube")
-                    )
-                  ),
-                  <.div(
-                    ^.className := "service-content",
+              <.div(^.className := "col-lg-4 col-md-6 col-12",
+                <.div(^.className := "single-service",
+                  <.div(^.className := "service-content",
                     <.h4(
-                      <.a(^.href := "service-market.html", "Market Research")
+                      <.a(^.href := "https://my.gov.uz/oz/kindergarten/default/create","Bolani bog'chaga joylashtirish uchun ariza berish")
                     ),
-                    <.p("""Cras venenatis, purus sit amet tempus mattis, justo nisi facilisis metus, in tempus ipsum
-                                ipsum eu ipsum. Class aptent taciti"""),
-                    <.a(
-                      ^.className := "btn",
-                      ^.href      := "service-market.html",
+                    <.a(^.className := "btn", ^.href := "https://my.gov.uz/oz/kindergarten/default/create",
                       <.i(^.className := "fa fa-arrow-circle-o-right"),
-                      """View
-                                Service"""
+                      "View Service"
+                    )
+                  )
+                )
+              ),
+              <.div(^.className := "col-lg-4 col-md-6 col-12",
+                <.div(^.className := "single-service",
+                  <.div(^.className := "service-content",
+                    <.h4(
+                      <.a(^.href := "https://yoshlardaftari.uz/#/citizens/check-in-notebook",""""Yoshlar daftari" dagi holatni tekshirish""")
+                    ),
+                    <.a(^.className := "btn", ^.href := "https://yoshlardaftari.uz/#/citizens/check-in-notebook",
+                      <.i(^.className := "fa fa-arrow-circle-o-right"),
+                      "View Service"
+                    )
+                  )
+                )
+              ),
+              <.div(^.className := "col-lg-4 col-md-6 col-12",
+                <.div(^.className := "single-service",
+                  <.div(^.className := "service-content",
+                    <.h4(
+                      <.a(^.href := "https://my.gov.uz/oz/university-reference","O'qish joyidan ma'lumotnoma olish (oliy ta'lim muassasasidan)")
+                    ),
+                    <.a(^.className := "btn", ^.href := "https://my.gov.uz/oz/university-reference",
+                      <.i(^.className := "fa fa-arrow-circle-o-right"),
+                      "View Service"
                     )
                   )
                 )
