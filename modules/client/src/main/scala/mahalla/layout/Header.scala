@@ -555,7 +555,7 @@ object Header extends AjaxImplicits {
                                       <.a(props.ctl setOnClick ServicesPage)("Xizmatlar")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
-                                      <.a(^.href := "about.html")("Tizim haqida")
+                                      <.a(props.ctl setOnClick AboutUsPage)("Tizim haqida")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(^.href := "contact.html")("Bog'lanish")
