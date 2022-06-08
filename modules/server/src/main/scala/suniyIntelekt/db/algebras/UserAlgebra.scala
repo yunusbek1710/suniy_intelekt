@@ -2,24 +2,22 @@ package suniyIntelekt.db.algebras
 
 import cats.effect.{Resource, Sync}
 import cats.implicits._
-import district.domain.{PersonForm, UserInfo}
+import district.domain.{Person, PersonForm, UserInfo}
 import district.refinements.EmailAddress
-import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, select, selectByEmail, selectPass}
+import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, select, selectInfo, selectByEmail, selectPass}
 import suniyIntelekt.domain.{User, UserData}
 import suniyIntelekt.utils.GenUUID
-import eu.timepit.refined.auto.autoUnwrap
-import skunk.Session
+import skunk._
 import skunk.implicits.toIdOps
 import tsec.passwordhashers.PasswordHash
 import tsec.passwordhashers.jca.SCrypt
 
-import java.util.UUID
 
 trait UserAlgebra[F[_]] extends IdentityProvider[F, UserInfo] {
   def findByEmail(email: EmailAddress): F[Option[UserInfo]]
   def retrievePass(email: EmailAddress): F[Option[PasswordHash[SCrypt]]]
   def create(user: UserData): F[User]
-  def get(email: EmailAddress): F[Option[UserInfo]]
+  def personInfos: F[List[Person]]
   def createPerson(form: PersonForm): F[Unit]
 
 }
@@ -49,8 +47,8 @@ object UserAlgebra {
         prepCmd(insertPerson, uuid ~ form)
       }
 
-    override def get(email: EmailAddress): F[Option[UserInfo]] =
-      prepOptQuery(selectByEmail, email)
+    override def personInfos: F[List[Person]] =
+      prepListQuery(selectInfo, Void)
 
   }
 }

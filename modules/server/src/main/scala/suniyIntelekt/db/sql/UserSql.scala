@@ -6,7 +6,7 @@ import skunk._
 import skunk.codec.all._
 import skunk.data.Type
 import skunk.implicits._
-import district.domain.{DocumentType, Gender, PersonForm, Role, UserInfo}
+import district.domain.{DocumentType, Gender, Person, PersonForm, Role, UserInfo}
 import district.refinements.EmailAddress
 import suniyIntelekt.domain.{User, UserData}
 
@@ -22,6 +22,11 @@ object UserSql {
   val dec: Decoder[User] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).map {
   case id ~ role ~ fullName ~ email ~ _ =>
       User(id, role, NonEmptyString.unsafeFrom(fullName), email)
+  }
+
+  val decP: Decoder[Person] = (uuid ~ documentType ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar.opt ~ gender ~ varchar ~ int4 ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar).map {
+  case id ~ documentType ~ documentNumber ~ fName ~ lName ~ fathersName ~ lPlace ~ phone ~ gender ~ street ~ houseNumber ~ eStatus ~ eduStatus ~ fStatus ~ hStatus ~ youthNote ~ ironNote ~ womenNote =>
+      Person(id, documentType, NonEmptyString.unsafeFrom(documentNumber), NonEmptyString.unsafeFrom(fName), NonEmptyString.unsafeFrom(lName), NonEmptyString.unsafeFrom(fathersName), NonEmptyString.unsafeFrom(lPlace), phone, gender, NonEmptyString.unsafeFrom(street), houseNumber, NonEmptyString.unsafeFrom(eStatus), NonEmptyString.unsafeFrom(eduStatus), NonEmptyString.unsafeFrom(fStatus), NonEmptyString.unsafeFrom(hStatus), NonEmptyString.unsafeFrom(youthNote), NonEmptyString.unsafeFrom(ironNote), NonEmptyString.unsafeFrom(womenNote))
   }
 
   val enc: Encoder[UUID ~ UserData] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).contramap { case id ~ u =>
@@ -53,6 +58,9 @@ object UserSql {
 
   val select: Query[UUID, User] =
     sql"""SELECT * FROM users WHERE id = $uuid """.query(dec)
+
+  val selectInfo: Query[Void, Person] =
+    sql"""SELECT * FROM personal_data""".query(decP)
 
   val selectPass: Query[EmailAddress, String] =
     sql"""SELECT password FROM users WHERE email = $emailCodec """.query(varchar)

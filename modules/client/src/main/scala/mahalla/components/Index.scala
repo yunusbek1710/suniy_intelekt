@@ -4,9 +4,10 @@ import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.hooks.Hooks
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
+import japgolly.scalajs.react.{Callback, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage
+import org.scalajs.dom.{HTMLScriptElement, Node, document}
 
 import scala.scalajs.js
 
@@ -16,18 +17,24 @@ object Index extends AjaxImplicits {
     busyLoader: Boolean = false
   )
 
+  def loadJs(path: String): Node = {
+    val script = document.createElement("script").asInstanceOf[HTMLScriptElement]
+    script.src = path
+    document.body.appendChild(script)
+  }
+
   class Backend($ : Hooks.UseState[State]) {
 
     def account: VdomArray =
       VdomArray(
-        <.section(^.className := "hero-slider style1",
-          <.div(^.className := "home-slider",
-            <.div(^.className := "single-slider", ^.style := js.Dictionary("background-image" -> "url('/assets/img/banner-1.jpg')"),
-              <.div(^.className := "container",
-                <.div(^.className := "row",
-                  <.div(^.className := "col-lg-7 col-md-8 col-12",
-                    <.div(^.className := "welcome-text",
-                      <.div(^.className := "hero-text",
+        <.section(^.className := "hero-slider style1")(
+          <.div(^.className := "home-slider")(
+            <.div(^.className := "single-slider slider-image")(
+              <.div(^.className := "container")(
+                <.div(^.className := "row")(
+                  <.div(^.className := "col-lg-7 col-md-8 col-12")(
+                    <.div(^.className := "welcome-text")(
+                      <.div(^.className := "hero-text")(
                         <.h4("18.04.2022"),
                         <.br,
                         <.h4("Mahallada yangi Guzar qurib bitkazildi va foydalanishga topshirildi")

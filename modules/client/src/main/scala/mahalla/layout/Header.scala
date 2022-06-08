@@ -1,8 +1,7 @@
 package mahalla.layout
 
 import district.api.Urls.UserData
-import district.domain.Role.{ADMIN, USER}
-import district.domain.{EmailAndPassword, UserForm, UserInfo}
+import district.domain.{UserForm, UserInfo}
 import district.refinements.{EmailAddress, Password}
 import domain.{SignInParams, SignUpParams}
 import eu.timepit.refined.types.all.NonEmptyString
@@ -17,8 +16,9 @@ import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage._
 import mahalla.TopLevelComponent.{AppPage, GlobalState}
+import mahalla.components.Index.loadJs
 import mahalla.notification.Notification
-import org.scalajs.dom.{HTMLElement, HTMLInputElement, window}
+import org.scalajs.dom.{HTMLElement, HTMLInputElement}
 
 import scala.scalajs.js
 
@@ -494,10 +494,10 @@ object Header extends AjaxImplicits {
                       ),
                       <.li(
                         <.a(
-                          ^.href := "#",
+                          ^.href := "/user/logout",
                           <.i(^.className := "fa fa-sign-out")("LogOut")
                         )
-                      )
+                      ).when(ctx.isAuthed)
                     )
                   )
                 )
@@ -523,7 +523,7 @@ object Header extends AjaxImplicits {
                           <.div(
                             ^.className := "img-logo",
                             <.a(
-                              ^.href := "index.html",
+                              ^.href := "/",
                               <.h2("Mahalla")
                             )
                           )
@@ -547,25 +547,25 @@ object Header extends AjaxImplicits {
                                     ^.className := "nav main-menu menu navbar-nav",
                                     <.li(
                                       <.a(props.ctl setOnClick IndexPage)("Bosh sahifa")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(props.ctl setOnClick NewsPage)("Yangiliklar")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(props.ctl setOnClick ServicesPage)("Xizmatlar")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(^.href := "about.html")("Tizim haqida")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(^.href := "contact.html")("Bog'lanish")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(props.ctl setOnClick AddPersonPage)("Add person")
-                                    ),
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
                                     <.li(
                                       <.a(props.ctl setOnClick PersonInfoPage)("Person info")
-                                    )
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "admin")
                                   )
                                 )
                               )

@@ -1,6 +1,9 @@
 package district.domain
 
 import eu.timepit.refined.types.string.NonEmptyString
+import io.circe.{Decoder, Encoder}
+import io.circe.refined._
+import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 
 import java.util.UUID
 
@@ -12,7 +15,7 @@ case class Person(
   lastName: NonEmptyString,
   fathersName: NonEmptyString,
   livingPlace: NonEmptyString,
-  phoneNumber: Option[NonEmptyString],
+  phoneNumber: Option[String],
   gender: Gender,
   street: NonEmptyString,
   houseNumber: Int,
@@ -25,4 +28,7 @@ case class Person(
   womenNote: NonEmptyString
 )
 
-
+object Person {
+  implicit val dec: Decoder[Person] = deriveDecoder[Person]
+  implicit val enc: Encoder[Person] = deriveEncoder[Person]
+}

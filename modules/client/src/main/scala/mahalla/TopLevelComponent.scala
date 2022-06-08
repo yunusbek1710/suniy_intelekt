@@ -76,7 +76,7 @@ object TopLevelComponent extends AjaxImplicits {
             Notification.render(),
             Header.component(Header.Props(ctl, r.page)),
             r.render(),
-            Footer()
+            Footer().when(r.page != AddPersonPage)
           )
         )
     }

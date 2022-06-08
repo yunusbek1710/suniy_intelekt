@@ -54,9 +54,6 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
             BadRequest("Something went wrong. Please try again!")
         }
 
-    case req @ GET -> Root / "get" / email =>
-      userService.get(EmailAddress.unsafeFrom(email)).flatMap(count => Ok(count))
-
   }
 
   private[this] val privateRoutes: HttpRoutes[F] = authService.securedRoutes {
@@ -73,6 +70,9 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
           logger.error(err)("Error occurred while add person. ") >>
             BadRequest("Something went wrong. Please try again!")
         }
+
+    case GET -> Root / "person-infos" asAuthed _ =>
+      userService.personInfos.flatMap(Ok(_))
 
     case secureReq @ GET -> Root / "logout" asAuthed _ =>
       authService.discard(secureReq.authenticator)
