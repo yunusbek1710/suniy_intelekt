@@ -3,9 +3,9 @@ package suniyIntelekt.domain
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.{Decoder, Encoder}
 import district.domain.Role
+import district.refinements.EmailAddress
 import eu.timepit.refined.types.string.NonEmptyString
 import io.circe.refined._
-import suniyIntelekt.domain.custom.refinements.EmailAddress
 
 import java.util.UUID
 

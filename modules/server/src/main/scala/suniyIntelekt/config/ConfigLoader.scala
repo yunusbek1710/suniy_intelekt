@@ -1,10 +1,10 @@
 package suniyIntelekt.config
 
 import cats.effect.Async
-import suniyIntelekt.domain.custom.refinements.UriAddress
 import cats.implicits._
 import ciris._
 import ciris.refined._
+import district.refinements.UriAddress
 import eu.timepit.refined.types.net.UserPortNumber
 import eu.timepit.refined.types.numeric.PosInt
 import eu.timepit.refined.types.string.NonEmptyString

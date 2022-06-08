@@ -2,8 +2,8 @@ package suniyIntelekt
 
 import cats.implicits._
 import cats.effect.{Async, Sync}
+import district.refinements.Password
 import suniyIntelekt.domain.custom.exception.MultipartDecodeError
-import suniyIntelekt.domain.custom.refinements.Password
 import suniyIntelekt.domain.custom.utils.MapConvert
 import suniyIntelekt.domain.custom.utils.MapConvert.ValidationResult
 import eu.timepit.refined.auto.autoUnwrap

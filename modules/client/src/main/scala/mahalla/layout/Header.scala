@@ -35,7 +35,7 @@ object Header extends AjaxImplicits {
     get(UserData.user)
       .fail(onError)
       .done[Option[UserInfo]] { result =>
-        ctx.setUser(result) >> Callback(window.location.reload(true))
+        ctx.setUser(result)
       }
       .asCallback
       .when_(ctx.isAuthed)
@@ -322,12 +322,8 @@ object Header extends AjaxImplicits {
       else if ($.value.signInParams.email.nonEmpty && !isValidEmail($.value.signInParams.email))
         Notification.error("Please enter correct email address! For example email@email.email")
       else if ($.value.signInParams.password.isEmpty) Notification.error("Please enter your password!")
-      else {
-        val loginForm: EmailAndPassword = EmailAndPassword(
-          email = EmailAddress.unsafeFrom($.value.signInParams.email),
-          password = Password.unsafeFrom($.value.signInParams.password)
-        )
-        post[EmailAndPassword](url = UserData.login, loginForm)
+      else
+        post[SignInParams](url = UserData.login, $.value.signInParams)
           .fail(onError)
           .doneWithoutContent {
             $.modState(_.copy(signInParams = SignInParams(), showModal = false)) >>
@@ -337,7 +333,6 @@ object Header extends AjaxImplicits {
               Callback(jQ("body").css("overflow-y", "scroll"))
           }
           .asCallback
-      }
 
     def loginModal: VdomArray =
       VdomArray(

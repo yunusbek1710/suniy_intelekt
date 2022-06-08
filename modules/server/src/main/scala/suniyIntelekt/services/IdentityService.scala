@@ -3,8 +3,8 @@ package suniyIntelekt.services
 
 import cats.data.OptionT
 import cats.effect.Sync
+import district.refinements.EmailAddress
 import suniyIntelekt.db.algebras.IdentityProvider
-import suniyIntelekt.domain.custom.refinements.EmailAddress
 import tsec.authentication.IdentityStore
 import tsec.authentication.credentials.SCryptPasswordStore
 import tsec.passwordhashers.PasswordHash

@@ -1,7 +1,7 @@
 package suniyIntelekt.db.algebras
 
 
-import suniyIntelekt.domain.custom.refinements.EmailAddress
+import district.refinements.EmailAddress
 import tsec.passwordhashers.PasswordHash
 import tsec.passwordhashers.jca.SCrypt
 

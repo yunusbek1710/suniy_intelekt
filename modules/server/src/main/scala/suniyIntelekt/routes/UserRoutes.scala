@@ -3,7 +3,8 @@ package suniyIntelekt.routes
 
 import cats.effect.Async
 import cats.implicits._
-import district.domain.{PersonForm, UserForm}
+import district.domain.{PersonForm, UserInfo}
+import district.refinements.EmailAddress
 import suniyIntelekt.domain._
 import suniyIntelekt.security.AuthService
 import suniyIntelekt.services.UserService
@@ -14,19 +15,17 @@ import org.typelevel.log4cats.Logger
 import tsec.authentication._
 import tsec.authentication.credentials.CredentialsError
 
-import java.util.UUID
-
 object UserRoutes {
   val prefixPath = "/user"
 
   def apply[F[_]: Async: Logger](userService: UserService[F])(implicit
-    authService: AuthService[F, User]
+    authService: AuthService[F, UserInfo]
   ): UserRoutes[F] = new UserRoutes(userService)
 }
 
 final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
   logger: Logger[F],
-  authService: AuthService[F, User]
+  authService: AuthService[F, UserInfo]
 ) {
 
   implicit object dsl extends Http4sDsl[F]
@@ -55,8 +54,8 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
             BadRequest("Something went wrong. Please try again!")
         }
 
-    case req @ GET -> Root / "get" / UUIDVar(userId) =>
-      userService.get(userId).flatMap(count => Ok(count))
+    case req @ GET -> Root / "get" / email =>
+      userService.get(EmailAddress.unsafeFrom(email)).flatMap(count => Ok(count))
 
   }
 

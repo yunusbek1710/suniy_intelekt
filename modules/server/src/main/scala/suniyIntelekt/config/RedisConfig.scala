@@ -1,6 +1,6 @@
 package suniyIntelekt.config
 
 
-import suniyIntelekt.domain.custom.refinements.UriAddress
+import district.refinements.UriAddress
 
 case class RedisConfig(uri: UriAddress)

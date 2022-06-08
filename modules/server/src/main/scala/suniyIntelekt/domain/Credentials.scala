@@ -2,12 +2,12 @@ package suniyIntelekt.domain
 
 import cats.effect.Sync
 import cats.implicits._
+import district.refinements.{EmailAddress, Password}
 import suniyIntelekt.domain.custom.utils.MapConvert
 import suniyIntelekt.domain.custom.utils.MapConvert.ValidationResult
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.{Decoder, Encoder}
 import io.circe.refined._
-import suniyIntelekt.domain.custom.refinements.{EmailAddress, Password}
 
 case class Credentials(email: EmailAddress, password: Password)
 object Credentials {

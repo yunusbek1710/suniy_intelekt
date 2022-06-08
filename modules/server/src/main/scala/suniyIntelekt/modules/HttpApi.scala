@@ -2,8 +2,8 @@ package suniyIntelekt.modules
 
 
 import cats.effect.{Async, Sync}
+import district.domain.UserInfo
 import suniyIntelekt.config.LogConfig
-import suniyIntelekt.domain.User
 import suniyIntelekt.routes._
 import suniyIntelekt.security.AuthService
 import org.http4s._
@@ -28,7 +28,7 @@ final class HttpApi[F[_]: Async: Logger] private (
 ) {
   private[this] val root: String        = "/"
   private[this] val webjarsPath: String = "/webjars"
-  implicit val authUser: AuthService[F, User] = program.auth.user
+  implicit val authUser: AuthService[F, UserInfo] = program.auth.user
 
   private[this] val rootRoutes: HttpRoutes[F] = RootRoutes[F].routes
   private[this] val userRoutes: HttpRoutes[F] = UserRoutes[F](program.userService).routes

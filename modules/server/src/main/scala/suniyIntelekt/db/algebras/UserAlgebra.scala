@@ -2,9 +2,9 @@ package suniyIntelekt.db.algebras
 
 import cats.effect.{Resource, Sync}
 import cats.implicits._
-import district.domain.{Person, PersonForm}
-import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, selectByEmail, selectPass, select}
-import suniyIntelekt.domain.custom.refinements.EmailAddress
+import district.domain.{PersonForm, UserInfo}
+import district.refinements.EmailAddress
+import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, select, selectByEmail, selectPass}
 import suniyIntelekt.domain.{User, UserData}
 import suniyIntelekt.utils.GenUUID
 import eu.timepit.refined.auto.autoUnwrap
@@ -15,11 +15,11 @@ import tsec.passwordhashers.jca.SCrypt
 
 import java.util.UUID
 
-trait UserAlgebra[F[_]] extends IdentityProvider[F, User] {
-  def findByEmail(email: EmailAddress): F[Option[User]]
+trait UserAlgebra[F[_]] extends IdentityProvider[F, UserInfo] {
+  def findByEmail(email: EmailAddress): F[Option[UserInfo]]
   def retrievePass(email: EmailAddress): F[Option[PasswordHash[SCrypt]]]
   def create(user: UserData): F[User]
-  def get(id: UUID): F[Option[User]]
+  def get(email: EmailAddress): F[Option[UserInfo]]
   def createPerson(form: PersonForm): F[Unit]
 
 }
@@ -34,7 +34,7 @@ object UserAlgebra {
       extends SkunkHelper[F]
       with UserAlgebra[F] {
 
-    override def findByEmail(email: EmailAddress): F[Option[User]] = prepOptQuery(selectByEmail, email)
+    override def findByEmail(email: EmailAddress): F[Option[UserInfo]] = prepOptQuery(selectByEmail, email)
 
     override def retrievePass(email: EmailAddress): F[Option[PasswordHash[SCrypt]]] =
       prepOptQuery(selectPass, email).map(_.map(PasswordHash[SCrypt]))
@@ -49,8 +49,8 @@ object UserAlgebra {
         prepCmd(insertPerson, uuid ~ form)
       }
 
-    override def get(id: UUID): F[Option[User]] =
-      prepOptQuery(select, id)
+    override def get(email: EmailAddress): F[Option[UserInfo]] =
+      prepOptQuery(selectByEmail, email)
 
   }
 }

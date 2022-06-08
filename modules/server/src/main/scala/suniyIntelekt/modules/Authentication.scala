@@ -2,8 +2,8 @@ package suniyIntelekt.modules
 
 import cats.implicits._
 import cats.effect.{Async, Sync}
+import district.domain.UserInfo
 import suniyIntelekt.db.algebras.{IdentityProvider, UserAlgebra}
-import suniyIntelekt.domain.User
 import suniyIntelekt.security.AuthService
 import suniyIntelekt.services.LiveIdentityService
 import suniyIntelekt.services.redis.RedisClient
@@ -21,11 +21,11 @@ object Authentication {
   def apply[F[_]: Async](
     userProvider: UserAlgebra[F]
   )(implicit F: Sync[F], redisClient: RedisClient[F]): F[Authentication[F]] =
-    makeAuthService[F, User](userProvider).map { userAuth =>
+    makeAuthService[F, UserInfo](userProvider).map { userAuth =>
       new Authentication[F](userAuth)
     }
 }
 
 final class Authentication[F[_]] private (
-  val user: AuthService[F, User]
+  val user: AuthService[F, UserInfo]
 )

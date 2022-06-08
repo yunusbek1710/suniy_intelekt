@@ -1,5 +1,6 @@
 package district.domain
 
+import district.refinements.EmailAddress
 import eu.timepit.refined.types.string.NonEmptyString
 import io.circe.refined._
 import io.circe.{Decoder, Encoder}
@@ -10,7 +11,8 @@ import java.util.UUID
 case class UserInfo(
   id: UUID,
   role: Role,
-  name: NonEmptyString
+  name: NonEmptyString,
+  email: EmailAddress
 )
 
 object UserInfo {

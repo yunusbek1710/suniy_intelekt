@@ -1,7 +1,7 @@
 package suniyIntelekt.security
 
 
-import suniyIntelekt.domain.custom.refinements.EmailAddress
+import district.refinements.EmailAddress
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.{Codec, Decoder, Encoder}
 import org.http4s._

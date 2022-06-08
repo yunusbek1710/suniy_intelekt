@@ -19,7 +19,7 @@ object TopLevelComponent extends AjaxImplicits {
     userInfo: Option[UserInfo] = None,
     setUser: Option[UserInfo] => Callback = _ => Callback.empty
   ) {
-    def isAuthed: Boolean = document.cookie.contains("ajs_anonymous_id")
+    def isAuthed: Boolean = document.cookie.contains("tsec-auth-cookie")
   }
 
   object GlobalState {
@@ -61,10 +61,10 @@ object TopLevelComponent extends AjaxImplicits {
       val rules =
         List(
           trimSlashes,
-          staticRoute(root, NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
+          staticRoute(root, IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl))),
           staticRoute("services", ServicesPage) ~> renderR(ctl => Services.component(Services.Props(ctl))),
           staticRoute("aboutUs", AboutUsPage) ~> renderR(ctl => AboutUs.component(AboutUs.Props(ctl))),
-          staticRoute("home", IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl))),
+          staticRoute("news", NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
           staticRoute("addPerson", AddPersonPage) ~> renderR(ctl => CreatePerson.component(CreatePerson.Props(ctl))),
           staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl)))
         )

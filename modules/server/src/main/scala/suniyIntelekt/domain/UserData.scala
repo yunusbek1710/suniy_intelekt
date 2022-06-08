@@ -1,9 +1,9 @@
 package suniyIntelekt.domain
 
+import district.refinements.{EmailAddress, FullName, Password}
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.refined._
 import io.circe.{Decoder, Encoder}
-import suniyIntelekt.domain.custom.refinements.{EmailAddress, FullName, Password}
 
 case class UserData(
   fullName: FullName,
