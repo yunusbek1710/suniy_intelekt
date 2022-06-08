@@ -9,6 +9,7 @@ object DocumentType {
   case object PASSPORT extends DocumentType("passport")
   case object BIRTHCERTIFICATE  extends DocumentType("birthCertificate")
   case object IDCARD  extends DocumentType("idCard")
+  case object DEFAULT  extends DocumentType("default")
 
   val types = List(PASSPORT, BIRTHCERTIFICATE, IDCARD)
 

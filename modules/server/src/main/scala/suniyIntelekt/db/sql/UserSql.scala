@@ -16,7 +16,7 @@ object UserSql {
 
   val role: Codec[Role] = `enum`[Role](_.value, Role.find, Type("role"))
   val gender: Codec[Gender] = `enum`[Gender](_.value, Gender.find, Type("gender"))
-  val documentType: Codec[DocumentType] = `enum`[DocumentType](_.value, DocumentType.find, Type("type"))
+  val documentType: Codec[DocumentType] = `enum`[DocumentType](_.value, DocumentType.find, Type("document_type"))
   val emailCodec: Codec[EmailAddress] = varchar.imap(email => EmailAddress.unsafeFrom(email))(email => email.value)
 
   val dec: Decoder[User] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).map {

@@ -55,6 +55,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .slider-image {
     background-image: url("../img/banner-1.jpg");
 }
+.person-form {
+    color: #17206a;
+}
 .header{
 	position:relative;
 }

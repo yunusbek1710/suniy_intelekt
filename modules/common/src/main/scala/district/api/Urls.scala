@@ -15,6 +15,7 @@ object Urls {
   }
 
   object AdminData {
+    val add: Url = "/user/create-person"
   }
 
 }

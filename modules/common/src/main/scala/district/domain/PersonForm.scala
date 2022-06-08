@@ -5,10 +5,7 @@ import io.circe.{Decoder, Encoder}
 import io.circe.refined._
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 
-import java.util.UUID
-
 case class PersonForm(
-  id: UUID,
   documentType: DocumentType,
   documentNumber: NonEmptyString,
   firstName: NonEmptyString,

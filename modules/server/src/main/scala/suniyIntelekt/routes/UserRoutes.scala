@@ -63,8 +63,8 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
     case ar @ POST -> Root / "create-person" asAuthed _ =>
       (for {
         form     <- ar.request.as[PersonForm]
-        user     <- userService.createPerson(form)
-        response <- Created(user)
+        person     <- userService.createPerson(form)
+        response <- Created(person)
       } yield response)
         .handleErrorWith { err =>
           logger.error(err)("Error occurred while add person. ") >>

@@ -1,4 +1,5 @@
 package district.domain
+
 import cats.Show
 import io.circe.{Decoder, Encoder}
 
@@ -7,6 +8,7 @@ sealed abstract class Gender(val value: String)
 object Gender {
   case object MALE extends Gender("male")
   case object FEMALE  extends Gender("female")
+  case object DEFAULT  extends Gender("default")
 
   val types = List(MALE, FEMALE)
 

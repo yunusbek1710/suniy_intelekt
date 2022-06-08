@@ -44,6 +44,7 @@ object UserAlgebra {
 
     override def createPerson(form: PersonForm): F[Unit] =
       GenUUID[F].make.flatMap { uuid =>
+        println(form)
         prepCmd(insertPerson, uuid ~ form)
       }
 
