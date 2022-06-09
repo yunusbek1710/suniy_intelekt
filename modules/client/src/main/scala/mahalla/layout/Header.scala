@@ -482,14 +482,14 @@ object Header extends AjaxImplicits {
                         <.a(
                           VdomAttr("data-toggle") := "modal",
                           VdomAttr("data-target") := "#loginModal",
-                          <.i(^.className := "fa fa-user")("LogIn")
+                          <.i(^.className := "fa fa-user")(" LogIn")
                         )
                       ),
                       <.li(
                         <.a(
                           VdomAttr("data-toggle") := "modal",
                           VdomAttr("data-target") := "#registerModal",
-                          <.i(^.className := "fa fa-user")("Register")
+                          <.i(^.className := "fa fa-user")(" Register")
                         )
                       ),
                       <.li(
