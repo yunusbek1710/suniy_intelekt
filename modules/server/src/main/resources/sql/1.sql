@@ -24,6 +24,7 @@ CREATE TABLE "personal_data"
     "id"                UUID PRIMARY KEY,
     "document_type"     DOCUMENT_TYPE NOT NULL,
     "document_number"   VARCHAR       NOT NULL,
+    "birthday"          VARCHAR       NOT NULL,
     "first_name"        VARCHAR       NOT NULL,
     "last_name"         VARCHAR       NOT NULL,
     "fathers_name"      VARCHAR       NOT NULL,

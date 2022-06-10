@@ -8,6 +8,7 @@ import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 case class PersonForm(
   documentType: DocumentType,
   documentNumber: NonEmptyString,
+  birthday: NonEmptyString,
   firstName: NonEmptyString,
   lastName: NonEmptyString,
   fathersName: NonEmptyString,

@@ -8,6 +8,7 @@ import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 case class PersonParams(
   documentType: DocumentType = DEFAULT,
   documentNumber: String = "",
+  birthday: String = "",
   firstName: String = "",
   lastName: String = "",
   fathersName: String = "",

@@ -11,6 +11,7 @@ case class Person(
   id: UUID,
   documentType: DocumentType,
   documentNumber: NonEmptyString,
+  birthday: NonEmptyString,
   firstName: NonEmptyString,
   lastName: NonEmptyString,
   fathersName: NonEmptyString,

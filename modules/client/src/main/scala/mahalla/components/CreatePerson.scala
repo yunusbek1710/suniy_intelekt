@@ -53,6 +53,9 @@ object CreatePerson extends AjaxImplicits {
     def onChangeEmployment(e: SyntheticEvent[HTMLSelectElement]): Callback =
       $.modState(_.copy(personParams = $.value.personParams.copy(employmentStatus = e.target.value)))
 
+    def onChangeBirthday(e: SyntheticEvent[HTMLSelectElement]): Callback =
+      $.modState(_.copy(personParams = $.value.personParams.copy(birthday = e.target.value)))
+
     def onChangeYouthNote(e: SyntheticEvent[HTMLInputElement]): Callback =
       $.modState(_.copy(personParams = $.value.personParams.copy(youthNote = e.target.value)))
 
@@ -100,6 +103,8 @@ object CreatePerson extends AjaxImplicits {
         Notification.error("Please select your document type!")
       else if ($.value.personParams.documentNumber.isEmpty)
         Notification.error("Please enter your document number!")
+      else if ($.value.personParams.birthday.isEmpty)
+        Notification.error("Please enter your birthday!")
       else if ($.value.personParams.firstName.isEmpty)
         Notification.error("Please enter your firstname!")
       else if ($.value.personParams.lastName.isEmpty)
@@ -147,7 +152,7 @@ object CreatePerson extends AjaxImplicits {
             <.div(^.cls := "person-form")(
               <.h3(^.className := "text-center")("Shaxsiy ma'lumot kiritish"),
               <.div(^.className := "row mt-4")(
-                <.div(^.className := "col-md-4")(
+                <.div(^.className := "col-md-3")(
                   <.label(^.`for` := "inputDoc", "Hujjat turi"),
                   <.select(
                     ^.onChange ==> onChangeDocumentType,
@@ -158,7 +163,7 @@ object CreatePerson extends AjaxImplicits {
                     <.option(^.value := "birthCertificate")("Tug'ilganlik guvohnomasi")
                   )
                 ),
-                <.div(^.className := "col-md-4")(
+                <.div(^.className := "col-md-3")(
                   <.label(^.`for` := "docnumber", "Hujjat seriyasi va raqami"),
                   <.input(
                     ^.`type`    := "text",
@@ -167,7 +172,16 @@ object CreatePerson extends AjaxImplicits {
                     ^.onChange ==> onChangeDocumentNumber
                   )
                 ),
-                <.div(^.className := "form-group col-md-4")(
+                <.div(^.className := "col-md-3")(
+                  <.label(^.`for` := "docnumber", "Tug'ilgan kuni"),
+                  <.input(
+                    ^.`type`    := "text",
+                    ^.className := "form-control form-control-lg",
+                    ^.value     := $.value.personParams.birthday,
+                    ^.onChange ==> onChangeBirthday
+                  )
+                ),
+                <.div(^.className := "form-group col-md-3")(
                   <.label(^.`for` := "phonenumber", "Telefon raqam"),
                   <.input(
                     ^.`type`    := "text",

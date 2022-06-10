@@ -24,17 +24,17 @@ object UserSql {
       User(id, role, NonEmptyString.unsafeFrom(fullName), email)
   }
 
-  val decP: Decoder[Person] = (uuid ~ documentType ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar.opt ~ gender ~ varchar ~ int4 ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar).map {
-  case id ~ documentType ~ documentNumber ~ fName ~ lName ~ fathersName ~ lPlace ~ phone ~ gender ~ street ~ houseNumber ~ eStatus ~ eduStatus ~ fStatus ~ hStatus ~ youthNote ~ ironNote ~ womenNote =>
-      Person(id, documentType, NonEmptyString.unsafeFrom(documentNumber), NonEmptyString.unsafeFrom(fName), NonEmptyString.unsafeFrom(lName), NonEmptyString.unsafeFrom(fathersName), NonEmptyString.unsafeFrom(lPlace), phone, gender, NonEmptyString.unsafeFrom(street), houseNumber, NonEmptyString.unsafeFrom(eStatus), NonEmptyString.unsafeFrom(eduStatus), NonEmptyString.unsafeFrom(fStatus), NonEmptyString.unsafeFrom(hStatus), NonEmptyString.unsafeFrom(youthNote), NonEmptyString.unsafeFrom(ironNote), NonEmptyString.unsafeFrom(womenNote))
+  val decP: Decoder[Person] = (uuid ~ documentType ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar.opt ~ gender ~ varchar ~ int4 ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar).map {
+  case id ~ documentType ~ documentNumber ~ birthday ~ fName ~ lName ~ fathersName ~ lPlace ~ phone ~ gender ~ street ~ houseNumber ~ eStatus ~ eduStatus ~ fStatus ~ hStatus ~ youthNote ~ ironNote ~ womenNote =>
+      Person(id, documentType, NonEmptyString.unsafeFrom(documentNumber), NonEmptyString.unsafeFrom(birthday), NonEmptyString.unsafeFrom(fName), NonEmptyString.unsafeFrom(lName), NonEmptyString.unsafeFrom(fathersName), NonEmptyString.unsafeFrom(lPlace), phone, gender, NonEmptyString.unsafeFrom(street), houseNumber, NonEmptyString.unsafeFrom(eStatus), NonEmptyString.unsafeFrom(eduStatus), NonEmptyString.unsafeFrom(fStatus), NonEmptyString.unsafeFrom(hStatus), NonEmptyString.unsafeFrom(youthNote), NonEmptyString.unsafeFrom(ironNote), NonEmptyString.unsafeFrom(womenNote))
   }
 
   val enc: Encoder[UUID ~ UserData] = (uuid ~ role ~ varchar ~ emailCodec ~ varchar).contramap { case id ~ u =>
     id ~ Role.USER ~ u.fullName.value ~ u.email ~ u.password.toHashUnsafe
   }
 
-  val encPerson: Encoder[UUID ~ PersonForm] = (uuid ~ documentType ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar.opt ~ gender ~ varchar ~ int4 ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar).contramap { case id ~ p =>
-    id ~ p.documentType ~ p.documentNumber.value ~ p.firstName.value ~ p.lastName.value ~ p.fathersName.value ~ p.livingPlace.value ~ p.phoneNumber.map(_.value) ~ p.gender ~ p.street.value ~ p.houseNumber ~ p.employmentStatus.value ~ p.educationalInfo.value ~ p.familyStatus.value ~ p.healthStatus.value ~ p.youthNote.value ~ p.ironNote.value ~ p.womenNote.value
+  val encPerson: Encoder[UUID ~ PersonForm] = (uuid ~ documentType ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar.opt ~ gender ~ varchar ~ int4 ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar ~ varchar).contramap { case id ~ p =>
+    id ~ p.documentType ~ p.documentNumber.value ~ p.birthday.value ~ p.firstName.value ~ p.lastName.value ~ p.fathersName.value ~ p.livingPlace.value ~ p.phoneNumber.map(_.value) ~ p.gender ~ p.street.value ~ p.houseNumber ~ p.employmentStatus.value ~ p.educationalInfo.value ~ p.familyStatus.value ~ p.healthStatus.value ~ p.youthNote.value ~ p.ironNote.value ~ p.womenNote.value
   }
 
   val decUserInfo: Decoder[UserInfo] = (uuid ~ role ~ varchar ~ varchar).map {

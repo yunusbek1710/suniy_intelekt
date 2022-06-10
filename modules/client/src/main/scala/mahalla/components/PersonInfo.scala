@@ -74,7 +74,7 @@ object PersonInfo extends AjaxImplicits {
                   <.div(^.className := "row")(
                     <.div(^.className  := "col table-bordered p-3")(
                       <.p(^.className  := "mt-2 text-white", "Tug'ilgan sanasi:"),
-                      <.h5(^.className := "text-white", "10-02-1999"),
+                      <.h5(^.className := "text-white", p.birthday.value),
                       <.p(^.className  := "mt-3 text-white", "Manzil:"),
                       <.h5(^.className := "text-white", p.livingPlace.value),
                       <.p(^.className  := "mt-3 text-white", "Ko'cha:"),
