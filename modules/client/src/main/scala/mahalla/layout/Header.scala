@@ -16,16 +16,12 @@ import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage._
 import mahalla.TopLevelComponent.{AppPage, GlobalState}
-import mahalla.components.Index.loadJs
 import mahalla.notification.Notification
 import org.scalajs.dom.{HTMLElement, HTMLInputElement}
-
-import scala.scalajs.js
 
 object Header extends AjaxImplicits {
 
   case class State(
-    signUpParams: SignUpParams = SignUpParams(),
     signInParams: SignInParams = SignInParams(),
     busyLoader: Boolean = false,
     showModal: Boolean = true
@@ -46,252 +42,6 @@ object Header extends AjaxImplicits {
       val regex = "^(?=.*\\d)(?=.*[/\\[\\]{}()*+?.,_^$|#!@%&\\s])(?=.*[A-Z])[a-zA-Z\\d-/\\]\\[{}()*+?.,_^$|#!@%&\\s]{6,32}$".r
       regex.pattern.matcher(password).find
     }
-
-    def onChangeName(e: SyntheticEvent[HTMLInputElement]): Callback =
-      $.modState(_.copy(signUpParams = $.value.signUpParams.copy(name = e.target.value)))
-
-    def onChangeEmail(e: SyntheticEvent[HTMLInputElement]): Callback =
-      $.modState(_.copy(signUpParams = $.value.signUpParams.copy(email = e.target.value)))
-
-    def onChangePassword(e: SyntheticEvent[HTMLInputElement]): Callback =
-      $.modState(_.copy(signUpParams = $.value.signUpParams.copy(password = e.target.value)))
-
-    def onChangeConfirmPassword(e: SyntheticEvent[HTMLInputElement]): Callback =
-      $.modState(_.copy(signUpParams = $.value.signUpParams.copy(confirmPassword = e.target.value)))
-
-    def haveDigit(password: String): Boolean = {
-      val digit = "\\d".r
-      digit.pattern.matcher(password).find
-    }
-
-    def haveLowerCaseLetter(password: String): Boolean = {
-      val lower = "[a-z]".r
-      lower.pattern.matcher(password).find
-    }
-
-    def haveUpperCaseLetter(password: String): Boolean = {
-      val upper = "[A-Z]".r
-      upper.pattern.matcher(password).find
-    }
-
-    def haveSpecialCharacter(password: String): Boolean = {
-      val upper = "[ `!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?~]".r
-      upper.pattern.matcher(password).find
-    }
-
-    def registerModal: VdomArray =
-      VdomArray(
-        <.div(
-          ^.cls                       := "modal fade",
-          (^.cls                      := "modal fade").when($.value.showModal),
-          ^.id                        := "registerModal",
-          ^.tabIndex                  := -1,
-          VdomAttr("aria-labelledby") := "registerModalLabel",
-          VdomAttr("aria-hidden")     := "true"
-        )(
-          <.div(^.cls := "modal-dialog")(
-            <.div(^.cls := "modal-content")(
-              <.div(^.cls := "modal-header")(
-                <.h5(^.cls := "modal-title", ^.id := "registerModalLabel")("Register Form")
-              ),
-              <.div(^.cls := "modal-body")(
-                <.div(^.cls := "registration__hr")(
-                  <.hr,
-                  <.span(^.cls := "registration__hr-label")("Or Sign Up Another Email")
-                ),
-                <.div(^.cls := "row")(
-                  <.div(^.id := "content", ^.cls := "col-12")(
-                    <.form(
-                      ^.action  := "",
-                      ^.method  := "post",
-                      ^.encType := "multipart/form-data",
-                      ^.cls     := "form-horizontal account-register clearfix"
-                    )(
-                      <.fieldset(^.id := "account", <.legend(^.cls := "fs-5")("Your Personal Details"))(
-                        <.div(^.cls := "form-group required", ^.style := js.Dictionary("display" -> "none"))(
-                          <.label(^.cls := "col-12 control-label")("Customer Group"),
-                          <.div(^.cls := "col-12")(
-                            <.div(^.cls := "radio")(
-                              <.label(
-                                <.input(
-                                  ^.`type`  := "radio",
-                                  ^.name    := "customer_group_id",
-                                  ^.value   := "1",
-                                  ^.checked := true
-                                ),
-                                "Default"
-                              )
-                            )
-                          )
-                        ),
-                        <.div(^.cls := "form-group required")(
-                          <.label(^.cls := "col-12 control-label", ^.`for` := "input-fullname")("Full name"),
-                          <.div(^.cls := "col-12")(
-                            <.input(
-                              ^.`type` := "text",
-                              ^.name   := "name",
-                              ^.onChange ==> onChangeName,
-                              ^.value       := $.value.signUpParams.name,
-                              ^.placeholder := "Full name",
-                              ^.id          := "input-fullname",
-                              ^.cls         := "form-control"
-                            )
-                          )
-                        ),
-                        <.div(^.cls := "form-group required")(
-                          <.label(^.cls := "col-12 control-label", ^.`for` := "input-email")("E-Mail"),
-                          <.div(^.cls := "col-12")(
-                            <.input(
-                              ^.`type` := "email",
-                              ^.name   := "email",
-                              ^.onChange ==> onChangeEmail,
-                              ^.value       := $.value.signUpParams.email,
-                              ^.placeholder := "E-Mail",
-                              ^.id          := "input-email",
-                              ^.cls         := "form-control"
-                            )
-                          )
-                        )
-                      ),
-                      <.fieldset(^.cls := "mt-2")(
-                        <.legend(^.cls := "fs-5")("Your Password"),
-                        <.div(^.cls := "form-group required")(
-                          <.label(^.cls := "col-12 control-label", ^.`for` := "input-password")("Password"),
-                          <.div(^.cls := "col-12")(
-                            <.div(^.cls := "input-group position-relative")(
-                              <.input(
-                                ^.`type`      := "password",
-                                ^.cls         := "form-control",
-                                ^.name        := "password",
-                                ^.id          := "input-password",
-                                ^.placeholder := "Password",
-                                ^.onChange ==> onChangePassword,
-                                ^.value := $.value.signUpParams.password
-                              ),
-                              <.i(
-                                ^.cls := "fa-solid fa-eye-slash pointer eye",
-                                ^.onClick ==> hideShowPassword
-                              )
-                            ),
-                            <.ul(^.cls := "validation-notify")(
-                              if (!haveLowerCaseLetter($.value.signUpParams.password)) {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("A lowercase letter")
-                                )
-                              } else if (!haveUpperCaseLetter($.value.signUpParams.password)) {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("A capital (uppercase) letter")
-                                )
-                              } else if (!haveDigit($.value.signUpParams.password)) {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("A number")
-                                )
-                              } else if (!haveSpecialCharacter($.value.signUpParams.password)) {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("A special character")
-                                )
-                              } else if (!($.value.signUpParams.password.length >= 6)) {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("Minimal length 6 characters")
-                                )
-                              } else {
-                                <.li(^.cls  := "text-success")(
-                                  <.i(^.cls := "fa fa-check me-2"),
-                                  <.span("Your password contains all required characters")
-                                )
-                              }
-                            )
-                          )
-                        ),
-                        <.div(^.cls := "form-group required")(
-                          <.label(^.cls := "col-12 control-label", ^.`for` := "input-confirm")("Password Confirm"),
-                          <.div(^.cls := "col-12")(
-                            <.div(^.cls := "input-group position-relative")(
-                              <.input(
-                                ^.`type`      := "password",
-                                ^.cls         := "form-control",
-                                ^.name        := "confirm",
-                                ^.id          := "input-confirm",
-                                ^.placeholder := "Confirm password",
-                                ^.onChange ==> onChangeConfirmPassword,
-                                ^.value := $.value.signUpParams.confirmPassword
-                              ),
-                              <.i(
-                                ^.cls := "fa-solid fa-eye-slash pointer eye",
-                                ^.onClick ==> hideShowPassword
-                              )
-                            ),
-                            <.ul(^.cls := "validation-notify")(
-                              if (
-                                $.value.signUpParams.password.nonEmpty && $.value.signUpParams.confirmPassword.nonEmpty
-                                  && ($.value.signUpParams.password == $.value.signUpParams.confirmPassword)
-                              ) {
-                                <.li(^.cls  := "text-success")(
-                                  <.i(^.cls := "fa fa-check me-2"),
-                                  <.span("All right!")
-                                )
-                              } else {
-                                <.li(^.cls  := "text-danger")(
-                                  <.i(^.cls := "fa fa-circle me-2"),
-                                  <.span("Your password doesn't match")
-                                )
-                              }
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              ),
-              <.div(^.cls := "modal-footer")(
-                <.button(^.cls := "btn btn-secondary", VdomAttr("data-dismiss") := "modal")("Close"),
-                <.a(^.href := "#", ^.cls := "btn btn-primary text-white", ^.onClick --> register)("Register")
-              )
-            )
-          )
-        )
-      )
-
-    def register: Callback =
-      if ($.value.signUpParams.name.isEmpty)
-        Notification.error("Please enter your name!")
-      else if ($.value.signUpParams.email.isEmpty)
-        Notification.error("Please enter your email!")
-      else if ($.value.signUpParams.email.nonEmpty && !isValidEmail($.value.signUpParams.email))
-        Notification.error("Please enter correct email address! For example email@email.email")
-      else if ($.value.signUpParams.password.isEmpty)
-        Notification.error("Please enter your password!")
-      else if ($.value.signUpParams.password.nonEmpty && !isValidPassword($.value.signUpParams.password))
-        Notification.error("Enter the password that matches the requested request!")
-      else if ($.value.signUpParams.confirmPassword.isEmpty)
-        Notification.error("Please enter confirm password!")
-      else if ($.value.signUpParams.password != $.value.signUpParams.confirmPassword)
-        Notification.error("Please enter correct password and confirm password!")
-      else {
-        $.modState(_.copy(busyLoader = true)) >> {
-          val userForm: UserForm = UserForm(
-            fullName = NonEmptyString.unsafeFrom($.value.signUpParams.name),
-            email = EmailAddress.unsafeFrom($.value.signUpParams.email),
-            password = Password.unsafeFrom($.value.signUpParams.password)
-          )
-          post[UserForm](url = UserData.register, userForm)
-            .fail(onError)
-            .doneWithoutContent {
-              Notification.success("You successfully registered!") >>
-                $.modState(_.copy(signUpParams = SignUpParams(), showModal = false, busyLoader = false)) >>
-                Callback(jQ(".modal-backdrop").css("opacity", 0).css("display", "none")) >>
-                Callback(jQ("#registerModal").css("display", "none")) >>
-                Callback(jQ("body").css("overflow-y", "scroll"))
-            }
-            .asCallback
-        }
-      }
 
     def onChangeEmailForLogin(e: SyntheticEvent[HTMLInputElement]): Callback =
       $.modState(_.copy(signInParams = $.value.signInParams.copy(email = e.target.value)))
@@ -487,13 +237,6 @@ object Header extends AjaxImplicits {
                       ),
                       <.li(
                         <.a(
-                          VdomAttr("data-toggle") := "modal",
-                          VdomAttr("data-target") := "#registerModal",
-                          <.i(^.className := "fa fa-user")(" Register")
-                        )
-                      ),
-                      <.li(
-                        <.a(
                           ^.href := "/user/logout",
                           <.i(^.className := "fa fa-sign-out")("LogOut")
                         )
@@ -678,8 +421,7 @@ object Header extends AjaxImplicits {
     def render: VdomArray =
       VdomArray(
         header,
-        loginModal,
-        registerModal
+        loginModal
       )
   }
 
