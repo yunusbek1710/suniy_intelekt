@@ -16,6 +16,7 @@ import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage._
 import mahalla.TopLevelComponent.{AppPage, GlobalState}
+import mahalla.components.ContactUs
 import mahalla.notification.Notification
 import org.scalajs.dom.{HTMLElement, HTMLInputElement}
 
@@ -230,6 +231,7 @@ object Header extends AjaxImplicits {
                       ),
                       <.li(
                         <.a(
+                          ^.href :="#",
                           VdomAttr("data-toggle") := "modal",
                           VdomAttr("data-target") := "#loginModal",
                           <.i(^.className := "fa fa-user")(" LogIn")
@@ -301,7 +303,7 @@ object Header extends AjaxImplicits {
                                       <.a(props.ctl setOnClick AboutUsPage)("Tizim haqida")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
-                                      <.a(^.href := "contact.html")("Bog'lanish")
+                                      <.a(props.ctl setOnClick ContactUsPage)("Bog'lanish")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
                                       <.a(props.ctl setOnClick AddPersonPage)("Add person")

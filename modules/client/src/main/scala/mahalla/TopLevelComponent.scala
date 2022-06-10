@@ -1,6 +1,6 @@
 package mahalla
 
-import TopLevelComponent.AppPage.{AboutUsPage, AddPersonPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
+import TopLevelComponent.AppPage.{AboutUsPage, AddPersonPage, ContactUsPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
 import district.domain.UserInfo
 import japgolly.scalajs.react.React.Context
 import japgolly.scalajs.react._
@@ -8,7 +8,7 @@ import japgolly.scalajs.react.component.Scala.{BackendScope, Component, Unmounte
 import japgolly.scalajs.react.extra.router.SetRouteVia.HistoryReplace
 import japgolly.scalajs.react.extra.router.{RouterCtl, _}
 import japgolly.scalajs.react.vdom.html_<^._
-import mahalla.components.{AboutUs, CreatePerson, Index, News, PersonInfo, Services}
+import mahalla.components.{AboutUs, ContactUs, CreatePerson, Index, News, PersonInfo, Services}
 import mahalla.layout.{Footer, Header}
 import mahalla.notification.Notification
 import org.scalajs.dom.document
@@ -48,6 +48,8 @@ object TopLevelComponent extends AjaxImplicits {
 
     case object AboutUsPage extends AppPage("AboutUs")
 
+    case object ContactUsPage extends AppPage("ContactUs")
+
     case object AddPersonPage extends AppPage("AddPerson")
 
     case object PersonInfoPage extends AppPage("PersonInfo")
@@ -64,6 +66,7 @@ object TopLevelComponent extends AjaxImplicits {
           staticRoute(root, IndexPage) ~> renderR(ctl => Index.component(Index.Props(ctl))),
           staticRoute("services", ServicesPage) ~> renderR(ctl => Services.component(Services.Props(ctl))),
           staticRoute("aboutUs", AboutUsPage) ~> renderR(ctl => AboutUs.component(AboutUs.Props(ctl))),
+          staticRoute("contactUs", ContactUsPage) ~> renderR(ctl => ContactUs.component(ContactUs.Props(ctl))),
           staticRoute("news", NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
           staticRoute("addPerson", AddPersonPage) ~> renderR(ctl => CreatePerson.component(CreatePerson.Props(ctl))),
           staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl)))
