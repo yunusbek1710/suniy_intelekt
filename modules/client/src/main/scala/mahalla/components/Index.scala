@@ -66,7 +66,7 @@ object Index extends AjaxImplicits {
                   <.div(^.className := "col-lg-4 col-md-6 col-12",
                     <.div(^.className := "single-news",
                       <.div(^.className := "news-head overlay",
-                        <.img(^.src := "/assets/img/news-1.jpg", ^.alt := "#"),
+                        <.img(^.src := "/assets/img/news-1.jpg", ^.alt := "news 1"),
                         <.ul(^.className := "news-meta",
                           <.li(^.className := "author",
                             <.a(^.href := "#",
