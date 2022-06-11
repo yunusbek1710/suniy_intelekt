@@ -6,6 +6,7 @@ object Urls {
   object Common {
     val logout:Url = "/user/logout"
     val index: Url = ""
+    val contact: Url = "/user/contact"
   }
 
   object UserData {

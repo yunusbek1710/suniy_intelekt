@@ -1,13 +1,14 @@
 package suniyIntelekt.services
 
 import cats.effect.Sync
-import district.domain.{Person, PersonForm}
+import district.domain.{ContactForm, Person, PersonForm}
 import org.typelevel.log4cats.Logger
 import suniyIntelekt.db.algebras.UserAlgebra
 import suniyIntelekt.domain.{User, UserData}
 
 trait UserService[F[_]] {
   def create(userData: UserData): F[User]
+  def createContact(form: ContactForm): F[Unit]
   def personInfos: F[List[Person]]
   def createPerson(form: PersonForm): F[Unit]
 }
@@ -34,4 +35,8 @@ final class LiveUserService[F[_]: Logger](
 
   override def createPerson(form: PersonForm): F[Unit] =
     userAlgebra.createPerson(form)
+
+  override def createContact(form: ContactForm): F[Unit] =
+    userAlgebra.createContact(form)
+
 }

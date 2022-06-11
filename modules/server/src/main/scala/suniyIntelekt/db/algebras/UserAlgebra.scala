@@ -2,9 +2,9 @@ package suniyIntelekt.db.algebras
 
 import cats.effect.{Resource, Sync}
 import cats.implicits._
-import district.domain.{Person, PersonForm, UserInfo}
+import district.domain.{ContactForm, Person, PersonForm, UserInfo}
 import district.refinements.EmailAddress
-import suniyIntelekt.db.sql.UserSql.{insert, insertPerson, select, selectInfo, selectByEmail, selectPass}
+import suniyIntelekt.db.sql.UserSql.{insert, insertContact, insertPerson, select, selectByEmail, selectInfo, selectPass}
 import suniyIntelekt.domain.{User, UserData}
 import suniyIntelekt.utils.GenUUID
 import skunk._
@@ -19,6 +19,7 @@ trait UserAlgebra[F[_]] extends IdentityProvider[F, UserInfo] {
   def create(user: UserData): F[User]
   def personInfos: F[List[Person]]
   def createPerson(form: PersonForm): F[Unit]
+  def createContact(form: ContactForm): F[Unit]
 
 }
 
@@ -46,6 +47,11 @@ object UserAlgebra {
       GenUUID[F].make.flatMap { uuid =>
         println(form)
         prepCmd(insertPerson, uuid ~ form)
+      }
+
+    override def createContact(form: ContactForm): F[Unit] =
+      GenUUID[F].make.flatMap { uuid =>
+        prepCmd(insertContact, uuid ~ form)
       }
 
     override def personInfos: F[List[Person]] =

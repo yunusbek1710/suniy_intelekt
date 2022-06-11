@@ -6,7 +6,7 @@ import skunk._
 import skunk.codec.all._
 import skunk.data.Type
 import skunk.implicits._
-import district.domain.{DocumentType, Gender, Person, PersonForm, Role, UserInfo}
+import district.domain.{ContactForm, DocumentType, Gender, Person, PersonForm, Role, UserInfo}
 import district.refinements.EmailAddress
 import suniyIntelekt.domain.{User, UserData}
 
@@ -37,6 +37,10 @@ object UserSql {
     id ~ p.documentType ~ p.documentNumber.value ~ p.birthday.value ~ p.firstName.value ~ p.lastName.value ~ p.fathersName.value ~ p.livingPlace.value ~ p.phoneNumber.map(_.value) ~ p.gender ~ p.street.value ~ p.houseNumber ~ p.employmentStatus.value ~ p.educationalInfo.value ~ p.familyStatus.value ~ p.healthStatus.value ~ p.youthNote.value ~ p.ironNote.value ~ p.womenNote.value
   }
 
+  val encContact: Encoder[UUID ~ ContactForm] = (uuid ~ varchar ~ varchar ~ varchar ~ varchar).contramap { case id ~ c =>
+    id ~ c.firstName.value ~ c.lastName.value ~ c.phone.value ~ c.description.value
+  }
+
   val decUserInfo: Decoder[UserInfo] = (uuid ~ role ~ varchar ~ varchar).map {
     case id ~ role ~ name ~ email =>
       UserInfo(
@@ -52,6 +56,9 @@ object UserSql {
 
   val insertPerson: Command[UUID ~ PersonForm] =
     sql"""INSERT INTO personal_data VALUES ($encPerson)""".command
+
+  val insertContact: Command[UUID ~ ContactForm] =
+    sql"""INSERT INTO applications VALUES ($encContact)""".command
 
   val selectByEmail: Query[EmailAddress, UserInfo] =
     sql"""SELECT id, role, name, email FROM users WHERE email = $emailCodec """.query(decUserInfo)

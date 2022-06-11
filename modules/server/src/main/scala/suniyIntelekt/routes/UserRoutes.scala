@@ -3,7 +3,7 @@ package suniyIntelekt.routes
 
 import cats.effect.Async
 import cats.implicits._
-import district.domain.{PersonForm, UserInfo}
+import district.domain.{ContactForm, PersonForm, UserInfo}
 import district.refinements.EmailAddress
 import suniyIntelekt.domain._
 import suniyIntelekt.security.AuthService
@@ -51,6 +51,17 @@ final class UserRoutes[F[_]: Async](userService: UserService[F])(implicit
       } yield response)
         .handleErrorWith { err =>
           logger.error(err)("Error occurred while register User. ") >>
+            BadRequest("Something went wrong. Please try again!")
+        }
+
+    case req @ POST -> Root / "contact" =>
+      (for {
+        form <- req.as[ContactForm]
+        unit     <- userService.createContact(form)
+        response <- Created(unit)
+      } yield response)
+        .handleErrorWith { err =>
+          logger.error(err)("Error occurred while send survey. ") >>
             BadRequest("Something went wrong. Please try again!")
         }
 
