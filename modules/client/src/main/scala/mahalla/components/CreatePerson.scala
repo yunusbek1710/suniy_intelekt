@@ -32,8 +32,8 @@ object CreatePerson extends AjaxImplicits {
       $.modState(
         _.copy(personParams =
           $.value.personParams.copy(documentType =
-            if (e.target.value == "idCard") IDCARD
-            else if (e.target.value == "birthCertificate") BIRTHCERTIFICATE
+            if (e.target.value == "id_card") IDCARD
+            else if (e.target.value == "birth_certificate") BIRTHCERTIFICATE
             else if (e.target.value == "passport") PASSPORT
             else DEFAULT
           )
@@ -158,10 +158,11 @@ object CreatePerson extends AjaxImplicits {
                   <.select(
                     ^.onChange ==> onChangeDocumentType,
                     ^.id        := "inputDoc",
-                    ^.className := "form-control",
+                    ^.className := "form-control")(
+                    <.option(^.value := "")("Select..."),
                     <.option(^.value := "passport")("Passport"),
-                    <.option(^.value := "idCard")("ID karta"),
-                    <.option(^.value := "birthCertificate")("Tug'ilganlik guvohnomasi")
+                    <.option(^.value := "id_card")("ID karta"),
+                    <.option(^.value := "birth_certificate")("Tug'ilganlik guvohnomasi")
                   )
                 ),
                 <.div(^.className := "col-md-3")(
@@ -186,12 +187,14 @@ object CreatePerson extends AjaxImplicits {
                 ),
                 <.div(^.className := "form-group col-md-3")(
                   <.label(^.`for` := "phonenumber", "Telefon raqam"),
-                  <.input(
-                    ^.`type`    := "text",
-                    ^.className := "form-control form-control-lg",
-                    ^.id        := "phonenumber",
-                    ^.value     := $.value.personParams.phoneNumber.getOrElse(""),
-                    ^.onChange ==> onChangePhoneNumber
+                  InputMask(
+                    className = "form-control form-control-lg",
+                    `type` = "text",
+                    id = "phonenumber",
+                    value     = $.value.personParams.phoneNumber.fold("")(_.trim),
+                    onChange = onChangePhoneNumber,
+                    mask = "99-999-9999",
+                    placeholder = "+998"
                   )
                 )
               ),
@@ -262,7 +265,8 @@ object CreatePerson extends AjaxImplicits {
                   <.select(
                     ^.onChange ==> onChangeGender,
                     ^.id        := "gender",
-                    ^.className := "form-control",
+                    ^.className := "form-control")(
+                    <.option(^.value := "")("Select..."),
                     <.option(^.value := "male")("Erkak"),
                     <.option(^.value := "female")("Ayol")
                   )
@@ -272,7 +276,8 @@ object CreatePerson extends AjaxImplicits {
                   <.select(
                     ^.id := "employment",
                     ^.onChange ==> onChangeEmployment,
-                    ^.className := "form-control",
+                    ^.className := "form-control")(
+                    <.option(^.value := "")("Select..."),
                     <.option(^.value := "Rasmiy band")("Rasmiy band"),
                     <.option(^.value := "Migratsiyaga ketgan")("Migratsiyaga ketgan"),
                     <.option(^.value := "Norasmiy band")("Norasmiy band"),
@@ -289,7 +294,8 @@ object CreatePerson extends AjaxImplicits {
                   <.select(
                     ^.onChange ==> onChangeFamilyStatus,
                     ^.id        := "familyCondition",
-                    ^.className := "form-control",
+                    ^.className := "form-control")(
+                    <.option(^.value := "")("Select..."),
                     <.option(^.value := "Oilali")("Oilali"),
                     <.option(^.value := "Ajrashgan")("Ajrashgan"),
                     <.option(^.value := "Oila qurmagan")("Oila qurmagan"),
@@ -302,7 +308,8 @@ object CreatePerson extends AjaxImplicits {
                   <.select(
                     ^.onChange ==> onChangeHealthStatus,
                     ^.id        := "health",
-                    ^.className := "form-control",
+                    ^.className := "form-control")(
+                    <.option(^.value := "")("Select..."),
                     <.option(^.value := "Sog'lom")("Sog'lom"),
                     <.option(^.value := "Surunkali kasallikka chalingan")("Surunkali kasallikka chalingan"),
                     <.option(^.value := "Nogironligi bor I")("Nogironligi bor I"),

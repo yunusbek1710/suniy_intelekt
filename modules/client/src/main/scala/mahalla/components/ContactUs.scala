@@ -7,6 +7,7 @@ import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.facade.SyntheticEvent
 import japgolly.scalajs.react.hooks.Hooks
+import mahalla.mask.InputMask
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
 import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
@@ -126,12 +127,13 @@ object ContactUs extends AjaxImplicits {
                       <.div(^.className := "col-lg-12 col-md-12 col-12")(
                         <.div(^.className   := "form-group")(
                           <.div(^.className := "icon", <.i(^.className := "fa fa-phone")),
-                          <.input(
-                            ^.`type`  := "number",
-                            ^.name := "phone",
-                            ^.placeholder := "+998",
-                            ^.value := $.value.contactParams.phone,
-                            ^.onChange ==> onChangePhone
+                          InputMask(
+                            `type` = "text",
+                            name = "phone",
+                            value     = $.value.contactParams.phone,
+                            onChange = onChangePhone,
+                            mask = "99 999-99-99",
+                            placeholder = "+998"
                           )
                         )
                       ),

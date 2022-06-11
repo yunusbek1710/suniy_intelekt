@@ -7,8 +7,8 @@ sealed abstract class DocumentType(val value: String)
 
 object DocumentType {
   case object PASSPORT extends DocumentType("passport")
-  case object BIRTHCERTIFICATE  extends DocumentType("birthCertificate")
-  case object IDCARD  extends DocumentType("idCard")
+  case object BIRTHCERTIFICATE  extends DocumentType("birth_certificate")
+  case object IDCARD  extends DocumentType("id_card")
   case object DEFAULT  extends DocumentType("default")
 
   val types = List(PASSPORT, BIRTHCERTIFICATE, IDCARD)
