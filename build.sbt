@@ -51,12 +51,14 @@ lazy val client = (project in file("modules/client"))
       "io.circe"                          %%% "circe-generic" % Versions.circe,
       "io.circe"                          %%% "circe-refined" % Versions.circe,
       "eu.timepit"                        %%% "refined"       % Versions.refined,
-      "io.udash"                          %%% "udash-jquery"  % "3.2.0"
+      "io.udash"                          %%% "udash-jquery"  % "3.2.0",
+      "io.kinoplan"                       %%% "scalajs-react-material-ui-core" % "0.3.1"
     ),
     webpackEmitSourceMaps := false,
     Compile / npmDependencies ++= Seq(
       "react" -> Versions.reactJs,
-      "react-dom" -> Versions.reactJs
+      "react-dom" -> Versions.reactJs,
+      "react-input-mask" -> "2.0.4"
     )
   )
   .enablePlugins(ScalaJSBundlerPlugin)

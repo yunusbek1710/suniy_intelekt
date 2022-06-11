@@ -6,6 +6,7 @@ import district.domain.DocumentType.{BIRTHCERTIFICATE, DEFAULT, IDCARD, PASSPORT
 import district.domain.Gender
 import district.domain.Gender.{FEMALE, MALE}
 import domain.PersonParams
+import mahalla.mask.InputMask
 import japgolly.scalajs.react.callback.Callback
 import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
@@ -174,11 +175,13 @@ object CreatePerson extends AjaxImplicits {
                 ),
                 <.div(^.className := "col-md-3")(
                   <.label(^.`for` := "docnumber", "Tug'ilgan kuni"),
-                  <.input(
-                    ^.`type`    := "text",
-                    ^.className := "form-control form-control-lg",
-                    ^.value     := $.value.personParams.birthday,
-                    ^.onChange ==> onChangeBirthday
+                  InputMask(
+                    className = "form-control form-control-lg",
+                    `type` = "text",
+                    value     = $.value.personParams.birthday,
+                    onChange = onChangeBirthday,
+                    mask = "99-99-9999",
+                    placeholder = "kun-oy-yil"
                   )
                 ),
                 <.div(^.className := "form-group col-md-3")(
