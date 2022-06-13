@@ -1,6 +1,6 @@
 package mahalla
 
-import TopLevelComponent.AppPage.{AboutUsPage, AddPersonPage, ContactUsPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
+import TopLevelComponent.AppPage.{AboutUsPage, AddPersonPage, ContactUsPage, FamilyInfoPage, IndexPage, NewsPage, PersonInfoPage, ServicesPage}
 import district.domain.UserInfo
 import japgolly.scalajs.react.React.Context
 import japgolly.scalajs.react._
@@ -8,7 +8,7 @@ import japgolly.scalajs.react.component.Scala.{BackendScope, Component, Unmounte
 import japgolly.scalajs.react.extra.router.SetRouteVia.HistoryReplace
 import japgolly.scalajs.react.extra.router.{RouterCtl, _}
 import japgolly.scalajs.react.vdom.html_<^._
-import mahalla.components.{AboutUs, ContactUs, CreatePerson, Index, News, PersonInfo, Services}
+import mahalla.components.{AboutUs, ContactUs, CreatePerson, FamilyInfo, Index, News, PersonInfo, Services}
 import mahalla.layout.{Footer, Header}
 import mahalla.notification.Notification
 import org.scalajs.dom.document
@@ -53,6 +53,8 @@ object TopLevelComponent extends AjaxImplicits {
     case object AddPersonPage extends AppPage("AddPerson")
 
     case object PersonInfoPage extends AppPage("PersonInfo")
+
+    case object FamilyInfoPage extends AppPage("FamilyInfo")
   }
 
   val baseUrl: BaseUrl = BaseUrl.fromWindowOrigin_/
@@ -69,7 +71,8 @@ object TopLevelComponent extends AjaxImplicits {
           staticRoute("contactUs", ContactUsPage) ~> renderR(ctl => ContactUs.component(ContactUs.Props(ctl))),
           staticRoute("news", NewsPage) ~> renderR(ctl => News.component(News.Props(ctl))),
           staticRoute("addPerson", AddPersonPage) ~> renderR(ctl => CreatePerson.component(CreatePerson.Props(ctl))),
-          staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl)))
+          staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl))),
+          staticRoute("familyInfo", FamilyInfoPage) ~> renderR(ctl => FamilyInfo.component(FamilyInfo.Props(ctl)))
         )
       rules
         .reduce(_ | _)
@@ -79,7 +82,7 @@ object TopLevelComponent extends AjaxImplicits {
             Notification.render(),
             Header.component(Header.Props(ctl, r.page)),
             r.render(),
-            Footer().when(r.page != AddPersonPage && r.page != PersonInfoPage)
+            Footer().when(r.page != AddPersonPage && r.page != PersonInfoPage && r.page != FamilyInfoPage)
           )
         )
     }

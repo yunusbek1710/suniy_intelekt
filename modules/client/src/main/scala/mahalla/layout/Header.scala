@@ -310,6 +310,9 @@ object Header extends AjaxImplicits {
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
                                     <.li(
                                       <.a(props.ctl setOnClick PersonInfoPage)("Person info")
+                                    ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
+                                    <.li(
+                                      <.a(props.ctl setOnClick FamilyInfoPage)("Family info")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin")
                                   )
                                 )

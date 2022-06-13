@@ -1,6 +1,8 @@
 package mahalla.components
 
 import district.api.Urls.AdminData
+import district.domain.Person
+import japgolly.scalajs.react.callback.Callback
 import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.facade.SyntheticEvent
@@ -10,8 +12,6 @@ import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage
 import org.scalajs.dom.HTMLInputElement
-import district.domain.Person
-import japgolly.scalajs.react.callback.Callback
 
 import scala.scalajs.js
 
@@ -30,7 +30,11 @@ object PersonInfo extends AjaxImplicits {
       $.modState(_.copy(selected = e.target.value))
 
     def find: Callback =
-      $.modState(_.copy(person = $.value.personalInfos.find(_.documentNumber.value == $.value.selected)))
+      $.modState(
+        _.copy(person =
+          $.value.personalInfos.find(_.documentNumber.value.trim.toLowerCase == $.value.selected.trim.toLowerCase)
+        )
+      )
 
     def account: TagMod =
       <.div(
