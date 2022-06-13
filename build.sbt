@@ -40,6 +40,7 @@ lazy val client = (project in file("modules/client"))
   .settings(
     name := "client",
     scalaJSUseMainModuleInitializer := true,
+    useYarn := true,
     resolvers += Resolver.sonatypeRepo("releases"),
     libraryDependencies ++= Seq(
       "io.github.chronoscala"             %%% "chronoscala"   % "2.0.2",

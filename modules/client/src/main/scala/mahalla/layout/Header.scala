@@ -323,7 +323,7 @@ object Header extends AjaxImplicits {
                               <.li(
                                 ^.className := "top-search",
                                 <.a(
-                                  ^.href := "#0",
+                                  ^.href := "#",
                                   <.i(^.className := "fa fa-search")
                                 )
                               ),
