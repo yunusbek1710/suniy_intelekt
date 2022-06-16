@@ -39,14 +39,12 @@ object IronNotes extends AjaxImplicits {
                   <.th("Jinsi"),
                   <.th("Manzil"),
                   <.th("Ko'cha nomi"),
-                  <.th("Oilaviy ahvoli"),
                   <.th("Salomatligi"),
-                  <.th("Yoshlar daftari a'zosi"),
-                  <.th("Temir daftari a'zosi")
+                  <.th("Yoshlar daftari a'zosi")
                 )
               ),
               <.tbody(
-                $.value.personalInfos.filter(_.ironNote.value == "ha").map { family =>
+                $.value.personalInfos.filter(_.youthNote.value == "ha").map { family =>
                   <.tr(
                     <.td(family.firstName.value),
                     <.td(family.lastName.value),
@@ -55,10 +53,8 @@ object IronNotes extends AjaxImplicits {
                     <.td(family.gender.value),
                     <.td(family.livingPlace.value),
                     <.td(family.street.value),
-                    <.td(family.familyStatus.value),
                     <.td(family.healthStatus.value),
-                    <.td(family.youthNote.value),
-                    <.td(family.ironNote.value)
+                    <.td(family.youthNote.value)
                   )
                 }: _*
               )
