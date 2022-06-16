@@ -75,7 +75,7 @@ object TopLevelComponent extends AjaxImplicits {
           staticRoute("addPerson", AddPersonPage) ~> renderR(ctl => CreatePerson.component(CreatePerson.Props(ctl))),
           staticRoute("personInfo", PersonInfoPage) ~> renderR(ctl => PersonInfo.component(PersonInfo.Props(ctl))),
           staticRoute("familyInfo", FamilyInfoPage) ~> renderR(ctl => FamilyInfo.component(FamilyInfo.Props(ctl))),
-          staticRoute("ironNoteInfo", IronNoteInfoPage) ~> renderR(ctl => IronNotes.component(IronNotes.Props(ctl)))
+          staticRoute("youthNoteInfo", IronNoteInfoPage) ~> renderR(ctl => IronNotes.component(IronNotes.Props(ctl)))
         )
       rules
         .reduce(_ | _)

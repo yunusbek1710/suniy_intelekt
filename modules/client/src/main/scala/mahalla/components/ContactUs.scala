@@ -93,7 +93,7 @@ object ContactUs extends AjaxImplicits {
             <.div(^.className := "row")(
               <.div(^.className := "col-lg-7 col-md-7 col-12")(
                 <.div(^.className := "contact-form-area m-top-30")(
-                  <.h4("Savol jo'natish"),
+                  <.h4("Savol va murojaat yo'llash"),
                   <.div(^.className := "form")(
                     <.div(^.className := "row")(
                       <.div(^.className := "col-lg-6 col-md-6 col-12")(

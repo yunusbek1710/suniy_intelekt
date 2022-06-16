@@ -23,7 +23,7 @@ p{
 	float: none;
 }
 .breadcrumbs .bread-menu{
-	margin-top:0px;
+	margin-top:0;
 }
 .topbar {
     text-align: center;
@@ -180,7 +180,7 @@ p{
 }
 .single-service h4 a {
   font-size: 18px;
-  margin-bottom:0px ;
+  margin-bottom:0;
 }
 .single-service h4 {
   margin-bottom: 5px;
@@ -322,7 +322,7 @@ p{
 	float: none;
 }
 .breadcrumbs .bread-menu{
-	margin-top:0px;
+	margin-top:0;
 }
 .breadcrumbs .bread-menu span {
     font-size: 15px;
@@ -404,8 +404,7 @@ p{
 .slicknav_btn {
 	background: transparent;
 	padding: 0;
-	margin: 0;
-	margin-right: 10px;
+	margin: 0 10px 0 0;
 }
 .slicknav_menu .slicknav_icon-bar{
 	box-shadow:none;
@@ -456,11 +455,10 @@ p{
 .slicknav_nav .slicknav_row, .slicknav_nav a {
 	padding: 0;
 	margin: 0;
-	padding: 6px 0;
 	font-weight: 500;
 }
 .slicknav_nav li:last-child a{
-	padding-bottom:0px;
+	padding-bottom:0;
 }
 .slicknav_menu .slicknav_icon-bar {
 	background-color: #1A9F68;
@@ -563,7 +561,7 @@ p{
 }
 .breadcrumbs h2 {
 	font-size: 26px;
-	margin-top: 0px;
+	margin-top: 0;
 	padding: 0;
 }
 .header .navbar {
@@ -643,7 +641,7 @@ p{
     margin-top: 15px;
 }
 .hero-agency .agency-feature {
-    margin-top: 0px;
+    margin-top: 0;
 }
 .hero-agency .a-feature {
     padding: 20px 5px;
@@ -691,7 +689,7 @@ p{
   height: 70px;
   line-height: 70px;
   font-size: 25px;
-  margin:0px ;
+  margin:0;
   /*margin-top: 0px;*/
   top: 50%;
 }

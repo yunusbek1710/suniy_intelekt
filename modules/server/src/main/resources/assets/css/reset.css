@@ -172,8 +172,7 @@ th {
 	width: 47px;
 	line-height: 47px;
 	background: #fff;
-	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.32);
-	border-radius: 3px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.32);
 	font-size: 25px;
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
@@ -258,7 +257,6 @@ ul, ul li{
 }
 pre {
 	background: #eee;
-	font-size: 15px;
 	font-size: 0.9375rem;
 	line-height: 1.6;
 	margin-bottom: 1.6em;
@@ -267,7 +265,6 @@ pre {
 	padding: 1.6em;
 }
 code, kbd, tt, var {
-	font-size: 15px;
 	font-size: 0.9375rem;
 }
 
@@ -284,7 +281,7 @@ big {
 	font-size: 125%;
 }
 .vc_column_container > .vc_column-inner{
-	padding-top:0px !important;
+	padding-top:0 !important;
 }
 .wpb_single_image {
 	margin: 0 !important;
@@ -307,8 +304,7 @@ big {
     display: inline-block;
     text-transform: capitalize;
     color: #17206a;
-    line-height: initial;
-    line-height: 42px;
+	line-height: 42px;
     margin-bottom: 10px;
 }
 .section-title h1 span {
@@ -337,7 +333,7 @@ big {
     font-weight: 700;
 }
 .section-title.style2 h1 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 .section-title.style2 h4 {
     font-size: 15px;
@@ -404,23 +400,22 @@ big {
 	background:#1A9F68;
 }
 .custom-shadow{
-	box-shadow: 0px 20px 60px #00000024;
+	box-shadow: 0 20px 60px #00000024;
 }
 .bizwheel-btn {
 	text-align: center;
-	margin: 0;
 	padding: 13px 32px;
 	background: #1A9F68;
 	color: #fff;
 	font-size: 15px;
-	border-radius: 0px;
+	border-radius: 0;
 	text-transform: capitalize;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
 	display: inline-block;
 	border: 2px solid transparent;
-	margin-right: 15px;
+	margin: 0 15px 0 0;
 }
 .bizwheel-btn:last-child{
 	margin:0;
@@ -444,8 +439,7 @@ big {
 	margin:0 !important;
 }
 .mfp-iframe-holder .mfp-close {
-    top: -40px;
-    position: absolute;
+	position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -673,8 +667,8 @@ a:hover, a:active {
 	}
 }
 
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
+.site-main .comment-navigation, .site-main,
+.posts-navigation, .site-main,
 .post-navigation {
 	margin: 0 0 1.5em;
 	overflow: hidden;
@@ -720,7 +714,6 @@ a:hover, a:active {
 	clip-path: none;
 	color: #21759b;
 	display: block;
-	font-size: 14px;
 	font-size: 0.875rem;
 	font-weight: bold;
 	height: auto;
@@ -1030,9 +1023,9 @@ object {
 	right: -245px;
 	text-align: left;
 	top: 30%;
-	-webkit-box-shadow: -3px 0px 25px -2px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: -3px 0px 25px -2px rgba(0, 0, 0, 0.2);
-	box-shadow: -3px 0px 25px -2px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: -3px 0 25px -2px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: -3px 0 25px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: -3px 0 25px -2px rgba(0, 0, 0, 0.2);
 }
 .techopz-options .icon {
 	position: absolute;
@@ -1047,7 +1040,7 @@ object {
 	color: #333;
 	top: 0;
 	cursor: pointer;
-	box-shadow: -4px 0px 5px #00000036;
+	box-shadow: -4px 0 5px #00000036;
 }
 .techopz-options .icon i {
 	cursor: pointer;
@@ -1078,7 +1071,6 @@ object {
 .techopz-options .select-layout a {
 	border: 1px solid #eee;
 	text-align: center;
-	padding: 5px 0;
 	outline: none;
 	display: inline-block;
 	padding: 5px 13px;
@@ -1185,24 +1177,7 @@ object {
 
 /* Video Animations */
 
-@-webkit-keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
+
 @keyframes waves {
     0% {
         -webkit-transform: scale(0.2, 0.2);
@@ -1222,26 +1197,6 @@ object {
     }
 }
 
-
-
-@-webkit-keyframes lineanim {
- 50% {
-  -webkit-transform:scaleY(1);
-  transform:scaleY(1);
-  -webkit-transform-origin:top left;
-  transform-origin:top left
- }
- 50.1% {
-  -webkit-transform-origin:bottom left;
-  transform-origin:bottom left
- }
- 100% {
-  -webkit-transform:scaleY(0);
-  transform:scaleY(0);
-  -webkit-transform-origin:bottom left;
-  transform-origin:bottom left
- }
-}
 @keyframes lineanim {
  50% {
   -webkit-transform:scaleY(1);

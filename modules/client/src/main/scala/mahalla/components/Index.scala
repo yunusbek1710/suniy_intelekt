@@ -4,7 +4,7 @@ import japgolly.scalajs.react.component.ScalaFn.Component
 import japgolly.scalajs.react.extra.router.RouterCtl
 import japgolly.scalajs.react.hooks.Hooks
 import japgolly.scalajs.react.vdom.html_<^.{<, _}
-import japgolly.scalajs.react.{Callback, CtorType, ScalaFnComponent}
+import japgolly.scalajs.react.{CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage
 import org.scalajs.dom.{HTMLScriptElement, Node, document}
@@ -87,10 +87,10 @@ object Index extends AjaxImplicits {
                       <.div(^.className := "news-body",
                         <.div(^.className := "news-content",
                           <.h3(^.className := "news-title",
-                            <.a(^.href := "#","Mahalla fuqarolar yig‘inlarining yangi binolari foydalanishga topshirildi")
+                            <.a(^.href := "#", "MFY ning yangi binolari foydalanishga topshirildi")
                           ),
                           <.div(^.className := "news-text",
-                            <.p("""Andijon, Oltinko‘l tumanida "Keksalar haftaligi" doirasida "Andijon" hamda “Ayshaxonim” mahalla fuqarolar yig‘ini yangi binolarining ochilish marosimi bo‘lib o‘tdi.""")
+                            <.p(""" "Keksalar haftaligi" doirasida "Andijon" hamda “Ayshaxonim” mahalla fuqarolar yig‘ini yangi binolarining ochilish marosimi bo‘lib o‘tdi.""")
                           ),
                           <.a(^.href := "blog-single.html", ^.className := "more","Batafsil o'qish",
                             <.i(^.className := "fa fa-angle-double-right", VdomAttr("aria-hidden") := "true")

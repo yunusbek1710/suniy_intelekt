@@ -1,10 +1,8 @@
 package mahalla.layout
 
 import district.api.Urls.UserData
-import district.domain.{UserForm, UserInfo}
-import district.refinements.{EmailAddress, Password}
-import domain.{SignInParams, SignUpParams}
-import eu.timepit.refined.types.all.NonEmptyString
+import district.domain.UserInfo
+import domain.SignInParams
 import io.udash.wrappers.jquery.jQ
 import japgolly.scalajs.react.callback.Callback
 import japgolly.scalajs.react.component.ScalaFn.Component
@@ -16,7 +14,6 @@ import japgolly.scalajs.react.{CallbackTo, CtorType, ScalaFnComponent}
 import mahalla.AjaxImplicits
 import mahalla.TopLevelComponent.AppPage._
 import mahalla.TopLevelComponent.{AppPage, GlobalState}
-import mahalla.components.ContactUs
 import mahalla.notification.Notification
 import org.scalajs.dom.{HTMLElement, HTMLInputElement}
 
@@ -269,7 +266,7 @@ object Header extends AjaxImplicits {
                             ^.className := "img-logo",
                             <.a(
                               ^.href := "/",
-                              <.h2("Mahalla")
+                              <.h4("Mening Mahallam")
                             )
                           )
                         ),
@@ -306,16 +303,16 @@ object Header extends AjaxImplicits {
                                       <.a(props.ctl setOnClick ContactUsPage)("Bog'lanish")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "" || ctx.userInfo.fold("")(_.role.value) == "user"),
                                     <.li(
-                                      <.a(props.ctl setOnClick AddPersonPage)("Add person")
+                                      <.a(props.ctl setOnClick AddPersonPage)("Shaxs kiritish")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
                                     <.li(
-                                      <.a(props.ctl setOnClick PersonInfoPage)("Person info")
+                                      <.a(props.ctl setOnClick PersonInfoPage)("Shaxsiy ma'lumot")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
                                     <.li(
-                                      <.a(props.ctl setOnClick FamilyInfoPage)("Family info")
+                                      <.a(props.ctl setOnClick FamilyInfoPage)("Oilaviy ma'lumot")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin"),
                                     <.li(
-                                      <.a(props.ctl setOnClick IronNoteInfoPage)("Youth note infos")
+                                      <.a(props.ctl setOnClick IronNoteInfoPage)("Yoshlar daftari")
                                     ).when(ctx.userInfo.fold("")(_.role.value) == "admin")
                                   )
                                 )
@@ -440,7 +437,7 @@ object Header extends AjaxImplicits {
       .withHooks[Props]
       .useState(State())
       .useContext(GlobalState.ctx)
-      .useEffectOnMountBy { (props: Props, $ : Hooks.UseState[State], ctx: GlobalState) =>
+      .useEffectOnMountBy { (_: Props, _: Hooks.UseState[State], ctx: GlobalState) =>
         get(UserData.user)
           .fail(onError)
           .done[Option[UserInfo]] { result =>

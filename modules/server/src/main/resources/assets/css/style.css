@@ -76,7 +76,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     cursor: pointer;
 }
 .topbar .single-contact:last-child{
-	margin-right:0px;
+	margin-right:0;
 }
 .topbar .single-contact,
 .topbar .single-contact a{
@@ -244,7 +244,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .header .nav li.icon-active a::after {
 	content: "\f107";
 	position: relative;
-	font-family: 'FontAwesome';
+    font-family: 'FontAwesome', serif;
 	padding-left: 6px;
 }
 .header .nav li .sub-menu a::after,
@@ -304,7 +304,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	display:none;
 }
 .header .nav li .sub-menu li:last-child a{
-	border-bottom:0px;
+	border-bottom:0;
 }
 .header .nav li .sub-menu li:hover a{
 	color:#fff;
@@ -321,12 +321,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 .header .nav li .sub-menu li .sub-menu {
     top: 0;
-    left: initial;
-    left: -122%;
-    -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 3px 5px #3333334d;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 5px #3333334d;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -354,7 +351,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	background:#179E66;
 }
 .header .nav li .sub-menu .sub-menu li:last-child a{
-	border-bottom:0px solid;
+	border-bottom:0 solid;
 }
 .header .nav li .sub-menu li .sub-menu .sub-menu {
 	transform: scaleY(0.2);
@@ -430,14 +427,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	top: -8px;
 	background: #1A9F68;
 	color: #fff;
-	display: block;
-	width: 20px;
+    width: 20px;
 	height: 20px;
 	line-height: 20px;
 	font-size: 13px;
 	border-radius: 100%;
 	left: 93%;
-	display: table-cell;
 }
 
 /* Header Search */
@@ -462,7 +457,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     position: relative;
     background: #fff;
     padding: 15px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.33);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.33);
 }
 .search-top .search-form input {
     height: 50px;
@@ -471,13 +466,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border: none;
     background: #fff;
     color: #333;
-    border-radius: 0px;
+    border-radius: 0;
     width: 100%;
     font-size: 14px;
-    border: 1px solid #ebebeb;
 }
 .search-top .search-form button {
     position: absolute;
@@ -486,7 +479,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     top: 15px;
     line-height: 50px;
     height: 50px;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
@@ -516,9 +509,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	border-left:3px solid #1A9F68;
     background: #fff;
     /* z-index: 6000; */
-    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
     -webkit-transition: all 0.3s ease 0s;
@@ -555,13 +548,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	color:#fff;
 }
 .sidebar-popup .logo {
-    margin: 0;
     padding: 0;
     float: none;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     background: transparent;
     position: relative;
-    padding: 0;
     box-shadow: none;
     line-height: initial;
     height: auto;
@@ -596,7 +587,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	margin-right:5px;
 }
 .sidebar-popup .social li:last-child{
-	margin-right:0px;
+	margin-right:0;
 }
 .sidebar-popup .social li a {
     height: 32px;
@@ -684,7 +675,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     box-shadow: none;
     line-height: initial;
     padding: 0;
-    margin: 0;
 }
 .header.style2 .nav li a {
     color: #eee;
@@ -756,7 +746,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     transition: all 0.8s ease;
     z-index: 2;
     margin-bottom: 15px;
-    box-shadow: 2px 0px 15px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 0 15px 0 rgba(0, 0, 0, 0.15);
     margin-top: 30px;
 }
 .single-news .news-head{
@@ -781,8 +771,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     border-right: 15px solid transparent;
     left: 50%;
     margin-left: -15px;
-    z-index: 333;
-    z-index: 4444;
     transform: translateY(50px);
 	opacity:0;
 	visibility:hidden;
@@ -797,6 +785,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 .single-news .news-head img{
 	width:100%;
+    height: 200px;
 	margin:0;
 	padding:0;
 	-webkit-transition:all 0.4s ease;
@@ -866,11 +855,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     margin-top: 15px;
     display: inline-block;
     font-size: 14px;
-    border-radius: 30px;
     background: #179E66;
     padding: 10px 20px;
-    border-radius: 0px;
-	border:1px solid transparent;
+    border:1px solid transparent;
 }
 .single-news .more:hover{
 	background:#17206a;
@@ -913,8 +900,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 .blog-detail .news-meta li {
     display: inline-block;
-    margin: 0;
-    margin-right: 15px;
+    margin: 0 15px 0 0;
     padding: 0;
 }
 .blog-detail .news-meta li i {
@@ -941,10 +927,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 .blog-single .blog-detail blockquote {
     position: relative;
-    font-size: 20px;
     line-height: 36px;
-    padding-left: inherit;
-    padding: 30px;
     background: #F4F9FC;
     color: #fff;
     border: none;
@@ -1000,7 +983,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .blog-single .coment-author .author span{
 	display:inline-block;
 	color:#333;
-	display:inline-block;
 }
 .blog-single .share-inner {
 	float: right;
@@ -1085,7 +1067,7 @@ blockquote {
 .blog-comments-form .form input,
 .blog-comments-form .form textarea {
     width: 100%;
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #cccccca6;
     height: 40px;
 	padding:10px;
@@ -1099,7 +1081,7 @@ blockquote {
 .blog-comments-form .form .bizwheel-btn {
 	background: #1A9F68;
 	padding: 20px 30px;
-	border-radius: 0px;
+	border-radius: 0;
 	border: none;
 	color: #fff;
 }
@@ -1154,9 +1136,9 @@ blockquote {
 	margin-bottom: 30px;
     background: #fff;
     padding: 20px;
-    -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .blog-sidebar .single-widget:last-child{
 	margin:0;
@@ -1203,12 +1185,11 @@ blockquote {
     border: none;
     color: #666;
     background: #fff;
-    border-radius: 5px;
     padding: 0 35px 0 20px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-radius: 0px;
+    border-radius: 0;
 }
 .blog-sidebar .blog_search button {
     position: absolute;
@@ -1308,13 +1289,11 @@ blockquote {
 .blog-sidebar .subscribe-form form input{
     height: 54px;
     padding: 0 20px 0 20px;
-    border: none;
     width: 100%;
     position: relative !important;
     font-size: 14px;
-    border: 1px solid #ebebeb;
     line-height: 50px;
-	border-radius:0px;
+	border-radius:0;
 }
 .blog-sidebar .subscribe-form form button {
 	background: #179e66;
@@ -1325,7 +1304,7 @@ blockquote {
 	text-align: center;
 	display: block;
 	margin-top: 10px;
-	border-radius: 0px;
+	border-radius: 0;
 	cursor: pointer;
 	color: #fff;
 	-webkit-transition:all 0.3s ease;
@@ -1444,23 +1423,19 @@ blockquote {
 	text-transform: capitalize;
 	font-size: 40px;
 	margin: 0;
-	padding: 0;
-	line-height: 45px;
+    line-height: 45px;
 	z-index: 333;
 	position: relative;
 	font-weight: 700;
-	padding-top: 10px;
+    padding: 10px 0 0;
 }
 .breadcrumbs .bread-list {
 	display: block;
 	margin-top: 15px;
 }
-.breadcrumbs ul li {
-	display: block;
-	display: inline-block;
-}
+
 .breadcrumbs ul li span {
-	margin: 0px 10px;
+	margin: 0 10px;
 	font-size: 11px;
 	font-weight: 400;
 	color:#fff;
@@ -1522,18 +1497,16 @@ blockquote {
 }
 .breadcrumbs .bread-menu li + li::before {
 	content: "\f105";
-	font-family: 'FontAwesome';
+    font-family: 'FontAwesome', serif;
 	left: -7px;
 	position: relative;
 	font-size: 18px;
 }
 /* Blog Single */
 .breadcrumbs.bread-blog {
-    padding: 0;
     text-align: center;
     background: #F4F9FC;
     margin: 0;
-    padding: 20px;
 }
 .breadcrumbs.bread-blog .bread-menu:before{
 	display:none;
@@ -1544,9 +1517,9 @@ blockquote {
 .breadcrumbs.bread-blog .bread-menu ul li:before {
     content: "";
     position: absolute;
-    right: 7.5px;
+    right: 8px;
     width: 12px;
-    font-size: 0px;
+    font-size: 0;
     height: 12px;
     left: auto;
     background: #179e66;
@@ -1590,20 +1563,18 @@ blockquote {
 	display: inline-block;
 }
 .pagination-main .pagination-list li:last-child{
-	margin-right:0px;
+	margin-right:0;
 }
 .pagination-main .pagination-list li a {
-	font-size: 20px;
-	background: #fff;
+    background: #fff;
 	color: #179E66;
 	height: 45px;
 	width: 50px;
 	line-height: 45px;
 	display: block;
 	font-weight: 400;
-	font-size: 18px;
-	text-align: center;
-	border-radius: 0px;
+    text-align: center;
+	border-radius: 0;
 }
 .pagination-main .pagination-list li.active a,
 .pagination-main .pagination-list li:hover a{
@@ -1732,9 +1703,9 @@ blockquote {
     left: 0;
     width: 100%;
     z-index: 300000;
-    -webkit-box-shadow: 0px 0px 10px #00000021;
-    -moz-box-shadow: 0px 0px 10px #00000021;
-    box-shadow: 0px 0px 10px #00000021;
+    -webkit-box-shadow: 0 0 10px #00000021;
+    -moz-box-shadow: 0 0 10px #00000021;
+    box-shadow: 0 0 10px #00000021;
     -webkit-transition: all 0.6s ease;
     -moz-transition: all 0.6s ease;
     transition: all 0.6s ease;
@@ -1863,7 +1834,7 @@ p.has-large-font-size {
 }
 /* Footer Link */
 .footer .f-link ul li {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     position: relative;
     padding-left: 25px;
     line-height: 34px;
@@ -1886,7 +1857,7 @@ p.has-large-font-size {
 	background:#fff;
 }
 .footer .f-link ul li:last-child{
-	margin-bottom:0px;
+	margin-bottom:0;
 }
 .footer .f-link ul li a {
     display: inline-block;
@@ -1917,13 +1888,11 @@ p.has-large-font-size {
 .footer .footer-newsletter form input{
 	height: 54px;
 	padding: 0 20px 0 20px;
-	border: none;
-	width: 100%;
+    width: 100%;
 	position: relative !important;
 	font-size: 14px;
-	border: 1px solid #ebebeb;
-	line-height: 50px;
-	border-radius:0px;
+    line-height: 50px;
+	border-radius:0;
 }
 .footer .footer-newsletter form button {
 	background: #179E66;
@@ -1937,8 +1906,7 @@ p.has-large-font-size {
 	text-align: center;
 	display: block;
 	margin: 0;
-	margin-top: 0px;
-	border-radius:0;
+    border-radius:0;
 	cursor: pointer;
 	color: #fff;
 	top: 15px;
@@ -1983,9 +1951,7 @@ p.has-large-font-size {
     font-size: 15px;
 }
 .footer .address-widget-list li i {
-    width: 25px;
     color: #fff;
-    width: 28px;
     height: 28px;
     line-height: 28px;
     border: 1px solid #eee;
@@ -2002,7 +1968,7 @@ p.has-large-font-size {
 	color:#17206a;
 }
 .footer .address-widget-list li:last-child{
-	margin-bottom:0px;
+	margin-bottom:0;
 }
 .footer .address-widget-list li span{
 	color:#179E66;
@@ -2020,7 +1986,7 @@ p.has-large-font-size {
     margin: 0 10px 0 0;
 }
 .footer .social li:last-child{
-	margin-right:0px;
+	margin-right:0;
 }
 .footer .social li a {
     color: #fff;
@@ -2156,19 +2122,12 @@ p.has-large-font-size {
     height: 60px;
     line-height: 60px;
     background: #1A9F68;
-    color: #fff;
-    position: absolute;
-    margin: 0;
-    padding: inherit;
-    font-size: 30px;
-    text-align: center;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    border-radius: 0px;
-    top: 50%;
-    margin-top: -30px;
 }
+
+.hero-slider .owl-carousel .owl-nav div {
+    color: #fff;
+}
+
 .hero-slider .owl-carousel .owl-nav div:hover{
 	color:#fff;
 	background:#17206a;
@@ -2177,13 +2136,13 @@ p.has-large-font-size {
 	left:-100px;
 }
 .hero-slider:hover .owl-carousel .owl-nav .owl-prev{
-	left:0px;
+	left:0;
 }
 .hero-slider .owl-carousel .owl-nav .owl-next{
 	right:-100px;
 }
 .hero-slider:hover .owl-carousel .owl-nav .owl-next{
-	right:0px;
+	right:0;
 }
 
 /* Hero Animations */
@@ -2255,9 +2214,9 @@ p.has-large-font-size {
 .hero-agency .video-head .video:hover{
 	background:#fff !important;
 	color:#179E66;
-	-webkit-box-shadow:0px 0px 15px #00000029;
-	-moz-box-shadow:0px 0px 15px #00000029;
-	box-shadow:0px 0px 15px #00000029;
+	-webkit-box-shadow:0 0 15px #00000029;
+	-moz-box-shadow:0 0 15px #00000029;
+	box-shadow:0 0 15px #00000029;
 }
 .hero-agency .video-play-main {
     display: inline-block;
@@ -2292,43 +2251,6 @@ p.has-large-font-size {
     -webkit-animation-delay: 2s;
     animation-delay: 2s;
 }
-@-webkit-keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
-@keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
-
 
 /* Agency Feature */
 .hero-agency .agency-feature {
@@ -2548,7 +2470,7 @@ p.has-large-font-size {
 }
 .features-main h2::before {
 	content: "";
-	padding: 0px;
+	padding: 0;
 	position: absolute;
 	left: 0;
 	width: 30px;
@@ -2576,7 +2498,7 @@ p.has-large-font-size {
     margin-top: 30px;
 }
 .features-main .single-list-feature:last-child{
-	margin-bottom:0px;
+	margin-bottom:0;
 }
 .features-main .single-list-feature h4 {
 	font-size: 18px;
@@ -2599,12 +2521,9 @@ p.has-large-font-size {
     background: #fff;
     color: #179e66;
     display: block;
-    border-radius: 0px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    display: block;
-    border-radius: 100%;
     font-size: 24px;
     text-align: center;
 }
@@ -2686,27 +2605,20 @@ p.has-large-font-size {
     color: #179E66;
     text-align: center;
     background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
     border-radius: 100%;
     display: inline-block;
     position: absolute;
     z-index: 333;
     bottom: -33px;
     right: 10px;
-    background: #fff;
+    background: #fff no-repeat;
     width: 66px;
     height: 66px;
     line-height: 66px;
     font-size: 25px;
-    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
     opacity: 1;
     visibility: visible;
 }
@@ -2724,7 +2636,6 @@ p.has-large-font-size {
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
-	text-transform: capitalize;
 }
 .single-service h4 a {
 	color: #28243C;
@@ -2791,7 +2702,7 @@ p.has-large-font-size {
 }
 .service-sidebar .widget ul li a:before{
     content: "\f0da";
-    font-family: 'FontAwesome';
+    font-family: 'FontAwesome', serif;
     margin-right: 12px;
     float: right;
     -webkit-transition: all 0.3s ease;
@@ -2800,7 +2711,7 @@ p.has-large-font-size {
 }
 .service-sidebar .widget {
     background: #fff;
-    box-shadow: 0px 0px 15px #0000001c;
+    box-shadow: 0 0 15px #0000001c;
     padding: 20px;
 }
 .service-sidebar .widget li {
@@ -2931,7 +2842,6 @@ p.has-large-font-size {
     overflow: hidden;
 }
 #portfolio-nav li {
-    padding: 0;
     position: relative;
     cursor: pointer;
     background: transparent;
@@ -2942,16 +2852,15 @@ p.has-large-font-size {
     transition: all 0.4s ease;
     font-size: 16px;
     float: left;
-    margin: 0 5px 0 0;
     text-transform: capitalize;
     font-weight: 600;
-    margin-right: 15px;
-    padding-right: 15px;
+    margin: 0 15px 0 0;
+    padding: 0 15px 0 0;
     border-right: 1px solid #cccccc9e;
 }
 #portfolio-nav li:last-child{
-	margin-right:0px;
-	padding-right:0px;
+	margin-right:0;
+	padding-right:0;
 	border:none;
 }
 #portfolio-nav li.active, 
@@ -3045,7 +2954,7 @@ p.has-large-font-size {
     bottom: 0;
     font-size: 17px;
     border-radius: 100%;
-    box-shadow: 0px 5px 5px #00000024;
+    box-shadow: 0 5px 5px #00000024;
     z-index: 333;
     left: 50%;
     margin-left: -25px;
@@ -3106,7 +3015,7 @@ p.has-large-font-size {
 	border-top: 3px solid #179E66;
 	text-align: center;
 	margin-top: 30px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.14);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
 }
 .pf-details .portfolio-meta ul{}
 .pf-details .portfolio-meta ul li {
@@ -3192,7 +3101,7 @@ p.has-large-font-size {
 	margin: 0;
 }
 .pf-details .single-portfolio .portfolio-content {
-	padding: 15px 0 0px;
+	padding: 15px 0 0;
 }
 .pf-details .portfolio-meta .bizwheel-btn {
     padding: 12px 30px;
@@ -3220,14 +3129,13 @@ p.has-large-font-size {
     background: #179e66;
     color: #fff;
     position: absolute;
-    margin: 0;
     text-align: center;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-radius: 0px;
+    border-radius: 0;
     top: 50%;
-    margin-top: -30px;
+    margin: -30px 0 0;
     padding: 0;
     font-size: 20px;
 }
@@ -3239,13 +3147,13 @@ p.has-large-font-size {
 	left:-100px;
 }
 .pf-details:hover .pf-details-slider .owl-nav .owl-prev{
-	left:0px;
+	left:0;
 }
 .pf-details .pf-details-slider .owl-nav .owl-next{
 	right:-100px;
 }
 .pf-details:hover .pf-details-slider .owl-nav .owl-next{
-	right:0px;
+	right:0;
 }
 /*======================================
 	End Portfolio CSS
@@ -3322,13 +3230,11 @@ p.has-large-font-size {
 	border-color:#179e66;
 }
 .testimonial-inner .t-left h2 {
-    margin-top: 0;
     font-size: 20px;
     position: relative;
     top: 0;
     line-height: initial;
     display: inline-block;
-    margin-top: 5px;
 }
 .testimonial-inner .t-left h2 span{
 	display:block;
@@ -3352,7 +3258,7 @@ p.has-large-font-size {
     margin-right: 8px;
 }
 .testimonial-slider .owl-controls .owl-dot:last-child {
-    margin-right: 0px;
+    margin-right: 0;
 }
 .testimonial-slider .owl-controls .owl-dot span {
     background: transparent;
@@ -3366,9 +3272,7 @@ p.has-large-font-size {
 }
 .testimonial-slider .owl-controls .owl-dot:hover span,
 .testimonial-slider .owl-controls .owl-dot.active span {
-    background: transparent;
     border-color: transparent;
-    background: #179e66;
 }
 /*======================================
 	End Testimonial CSS
@@ -3472,9 +3376,9 @@ p.has-large-font-size {
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    -webkit-box-shadow: 0px 4px 10px #0000001a;
-    -moz-box-shadow: 0px 4px 10px #0000001a;
-    box-shadow: 0px 4px 10px #0000001a;
+    -webkit-box-shadow: 0 4px 10px #0000001a;
+    -moz-box-shadow: 0 4px 10px #0000001a;
+    box-shadow: 0 4px 10px #0000001a;
 }
 .single-team .team-head {
 	position: relative;
@@ -3503,9 +3407,9 @@ p.has-large-font-size {
     color: #fff !important;
     border-radius: 100%;
     cursor: pointer;
-    -webkit-box-shadow: 0px 0px 10px #0000001a;
-    -moz-box-shadow: 0px 0px 10px #0000001a;
-    box-shadow: 0px 0px 10px #0000001a;
+    -webkit-box-shadow: 0 0 10px #0000001a;
+    -moz-box-shadow: 0 0 10px #0000001a;
+    box-shadow: 0 0 10px #0000001a;
 }
 .single-team .team-arrow a:hover {
 	background:#179e66;
@@ -3558,7 +3462,6 @@ p.has-large-font-size {
     right: 10px;
     top: 10px;
     width: 48px;
-    border-radius: 30px;
     height: auto;
     padding: 12px 0;
     opacity: 0;
@@ -3569,8 +3472,7 @@ p.has-large-font-size {
     -webkit-transform: translateY(-10px);
     -moz-transform: translateY(-10px);
     transform: translateY(-10px);
-    border-radius: 0px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.28);
 }
 .single-team.active .team-social{
 	opacity:1;
@@ -3578,21 +3480,17 @@ p.has-large-font-size {
     transform: translateY(0px);
 }
 .single-team .team-social li {
-    display: inline-block;
-    display: block;
-    margin: 0;
     text-align: center;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
 }
 .single-team .team-social li:last-child{
 	margin:0;
 }
 .single-team .team-social li a {
-    display: block;
     font-size: 15px;
     color: #17206a;
     line-height: 30px;
-    display: inline-block;
+
 }
 .single-team .team-social li a:hover{
 	color:#179e66;
@@ -3616,7 +3514,7 @@ p.has-large-font-size {
     margin-right: 8px;
 }
 .team-slider .owl-controls .owl-dot:last-child {
-    margin-right: 0px;
+    margin-right: 0;
 }
 .team-slider .owl-controls .owl-dot span {
     background: transparent;
@@ -3630,9 +3528,7 @@ p.has-large-font-size {
 }
 .team-slider .owl-controls .owl-dot:hover span,
 .team-slider .owl-controls .owl-dot.active span {
-    background: transparent;
     border-color: transparent;
-    background: #179e66;
 }
 
 .team-archive .single-team {
@@ -3669,7 +3565,6 @@ p.has-large-font-size {
     line-height: 45px;
     background: #179e66;
     color: #fff;
-    margin: 0;
     padding: inherit;
     font-size: 22px;
     text-align: center;
@@ -3677,7 +3572,7 @@ p.has-large-font-size {
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
     border-radius: inherit;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
 }
 .news-slider.owl-carousel .owl-nav div:hover {
 	background:#17206a;
@@ -3701,10 +3596,10 @@ p.has-large-font-size {
 }
 .blog-latest .single-news {
     display: table;
-    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
-    margin-bottom: 0px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    margin-bottom: 0;
 }
 .blog-latest .single-news .bizwheel-btn {
     z-index: 333;
@@ -3733,13 +3628,9 @@ p.has-large-font-size {
     width: 100%;
     height: 100%;
     display: block;
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     z-index: 0;
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -3774,7 +3665,7 @@ p.has-large-font-size {
 }
 .blog-latest .single-news .news-meta li {
     color: #666;
-    padding-left: 0px;
+    padding-left: 0;
 }
 .blog-latest-slider .single-slider {
     margin-bottom: 10px;
@@ -3791,17 +3682,16 @@ p.has-large-font-size {
     background: #179e66;
     color: #fff;
     position: absolute;
-    margin: 0;
     padding: inherit;
     font-size: 30px;
     text-align: center;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-radius: 0px;
+    border-radius: 0;
     top: 50%;
-    margin-top: -30px;
-	opacity:0;
+    margin: -30px 0 0;
+    opacity:0;
 	visibility:hidden;
 }
 .blog-latest.owl-carousel:hover .owl-nav div{
@@ -3816,13 +3706,13 @@ p.has-large-font-size {
 	left:-100px;
 }
 .blog-latest.owl-carousel:hover .owl-nav .owl-prev{
-	left:0px;
+	left:0;
 }
 .blog-latest.owl-carousel .owl-nav .owl-next{
 	right:-100px;
 }
 .blog-latest.owl-carousel:hover  .owl-nav .owl-next{
-	right:0px;
+	right:0;
 }
 /*======================================
 	End BLog CSS
@@ -3863,7 +3753,6 @@ p.has-large-font-size {
     color: #179e66 !important;
     position: absolute;
     background: transparent !important;
-    margin: 0;
     box-shadow: none;
     padding: inherit;
     font-size: 35px;
@@ -3871,9 +3760,9 @@ p.has-large-font-size {
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-radius: 0px;
+    border-radius: 0;
     top: 50%;
-    margin-top: -16.5px;
+    margin: -16.5px 0 0;
 }
 .partner-slider.owl-carousel .owl-nav .owl-prev{
 	left:-50px;
@@ -3933,7 +3822,7 @@ p.has-large-font-size {
 	bottom: -4px;
 	left: 50%;
 	content: "";
-	border-left: 0px solid transparent;
+	border-left: 0 solid transparent;
 	border-right: 20px solid transparent;
 	border-top: 10px solid #179e66;
 	margin-left: -13px;
@@ -3970,9 +3859,9 @@ p.has-large-font-size {
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    -webkit-box-shadow: 0px 0px 25px #0000001f;
-    -moz-box-shadow: 0px 0px 25px #0000001f;
-    box-shadow: 0px 0px 25px #0000001f;
+    -webkit-box-shadow: 0 0 25px #0000001f;
+    -moz-box-shadow: 0 0 25px #0000001f;
+    box-shadow: 0 0 25px #0000001f;
     overflow: hidden;
 }
 .single-pricing .price-head {
@@ -3994,7 +3883,7 @@ p.has-large-font-size {
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
     text-align: center;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     color: #179e66;
     border-radius: 100%;
     background: #fff;
@@ -4003,7 +3892,6 @@ p.has-large-font-size {
     width: 70px;
     height: 70px;
     line-height: 70px;
-    text-align: center;
     border: 3px solid #ebebeb;
     display: inline-block;
 }
@@ -4042,9 +3930,7 @@ p.has-large-font-size {
 }
 .single-pricing .price-list li {
     display: block;
-    font-weight: normal;
     line-height: 30px;
-    font-weight: 400;
     color: #777;
 }
 .single-pricing .price-list li:last-child{
@@ -4064,19 +3950,15 @@ p.has-large-font-size {
 }
 /* Popular Pricing*/
 .single-pricing .p-best {
-    position: relative;
     display: inline-block;
     text-transform: capitalize;
-    border-radius: 5px;
     overflow: hidden;
     color: #fff;
     font-size: 15px;
     background: #179E66;
-    position: absolute;
     top: 14px;
     left: -45px;
     transform: rotate(-48deg);
-    border-radius: 0px;
     padding: 10px 48px;
     font-weight: 700;
     z-index: 6;
@@ -4102,7 +3984,7 @@ p.has-large-font-size {
 .faqs{
 	padding:70px 0 100px;
 }
-.faqs
+.faqs,
 .single-faq {
 	margin-bottom: 10px;
 }
@@ -4123,18 +4005,14 @@ p.has-large-font-size {
 .faq-title a {
 	padding: 16px 0;
 	font-size:18px;
-	padding-left: 0px;
-	padding-left: 55px !important;
-	border: 1px solid #ebebeb;
+    border: 1px solid #ebebeb;
 	margin-bottom: 1px;
 	display: block;
 }
 .faq-body{
-	border: none;
-	background: #fff;
+    background: #fff;
 	padding: 20px 49px;
-	border: 1px solid #ebebeb;
-	border-top: none;
+    border-top: none;
 }
 .faq-body p{
 	font-size:15px;
@@ -4182,15 +4060,13 @@ p.has-large-font-size {
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
     font-size: 18px;
-    margin-bottom: 0px;
     line-height: inherit;
-    margin-bottom: 5px;
 }
 /* Google Map */
 #myMap {
 	height: 500px;
 	width: 100%;
-	border-radius: 0px;
+	border-radius: 0;
 }
 
 .vc_custom_1578564488430 {
@@ -4217,7 +4093,7 @@ p.has-large-font-size {
 .contact-form-area {
 	background: #fff;
 	padding: 40px;
-	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.18);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.18);
 	border-top: 2px solid #179E66;
 }
 .contact-form-area h4 {
@@ -4225,16 +4101,15 @@ p.has-large-font-size {
 	font-weight: 600;
 }
 .contact-form-area .form-group{
-	margin:0;
-	margin-top:20px;
+    margin: 20px 0 0;
 }
 .contact-form-area .form-group input {
     height: 50px;
     border: 1px solid rgba(204, 204, 204, 0.58);
     width: 100%;
     display: block;
-    border-radius: 0px;
-    padding: 0px 40px 0 15px;
+    border-radius: 0;
+    padding: 0 40px 0 15px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
@@ -4252,15 +4127,12 @@ p.has-large-font-size {
     border: 1px solid #dfdfdf;
     width: 100%;
     display: block;
-    border-radius: 5px;
-    padding: 15px;
     resize: none;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    border-radius: 0px;
-    padding-right: 40px;
-	font-weight:normal;
+    padding: 15px 40px 15px 15px;
+    font-weight:normal;
 }
 .contact-form-area .form-group{
 	position:relative;
@@ -4290,7 +4162,7 @@ p.has-large-font-size {
     padding: 30px;
 }
 .contact-form-area.faq-form .form-group {
-	margin-top:0px;
+	margin-top:0;
     margin-bottom: 20px;
 }
 .contact-form-area.faq-form .form-group input {
@@ -4421,42 +4293,8 @@ p.has-large-font-size {
     -webkit-animation-delay: 2s;
     animation-delay: 2s;
 }
-@-webkit-keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
-@keyframes waves {
-    0% {
-        -webkit-transform: scale(0.2, 0.2);
-        transform: scale(0.2, 0.2);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-    50% {
-        opacity: 0.9;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-    }
-    100% {
-        -webkit-transform: scale(0.9, 0.9);
-        transform: scale(0.9, 0.9);
-        opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
-}
+
+
 .img-feature span {
     display: block;
     text-align: left;
@@ -4476,7 +4314,7 @@ p.has-large-font-size {
 .img-feature span:before {
     content: "";
     position: absolute;
-    left: 0px;
+    left: 0;
     top: -25px;
     border-left: 14px solid transparent;
     border-top: 12px solid transparent;
@@ -4486,22 +4324,20 @@ p.has-large-font-size {
 	height: 100%;
 	width: 100%;
 	border-radius: 8px;
-	box-shadow: 0px 5px 35px #0000001f;
+	box-shadow: 0 5px 35px #0000001f;
 }
 .img-feature .experience {
 	position: absolute;
 	left: -50px;
 	bottom: -50px;
-	padding: 0;
-	background: #179e66;
+    background: #179e66;
 	width: 225px;
 	z-index: 2;
 	border-radius: 100%;
 	text-align: left;
 	height: 225px;
 	border: 8px solid #fff;
-	box-shadow: 0px 0px 10px #0000002b;
-	padding: 50px 25px;
+	box-shadow: 0 0 10px #0000002b;
 }
 .img-feature .experience h2 {
 	color: #fff;
@@ -4567,16 +4403,14 @@ p.has-large-font-size {
 	top: 50%;
 	left: 50%;
 	width: 80px;
-	z-index: 333;
-	height: 80px;
+    height: 80px;
 	color: #179e66;
 	font-size: 30px;
 	text-align: center;
 	line-height: 80px;
 	background: #fff;
 	margin: -40px 0 0 -40px;
-	z-index: 2500;
-	border-radius: 100%;
+    border-radius: 100%;
 }
 .modern-img-feature .video-play:hover a{
 	background:#179e66;
@@ -4653,9 +4487,9 @@ p.has-large-font-size {
 .pagination-plugin li:hover a {
 	background: #179e66;
 	color: #fff;
-	-webkit-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
-	-moz-box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
-	box-shadow: 0px 10px 15px rgba(88, 85, 85, 0.15);
+	-webkit-box-shadow: 0 10px 15px rgba(88, 85, 85, 0.15);
+	-moz-box-shadow: 0 10px 15px rgba(88, 85, 85, 0.15);
+	box-shadow: 0 10px 15px rgba(88, 85, 85, 0.15);
 }
 .pagination-plugin li.prev a,
  .pagination-plugin li.next a {
